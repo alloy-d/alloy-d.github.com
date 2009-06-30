@@ -1,5 +1,4 @@
 ---
-layout: default
 title: Portfolio
 description: my portfolio
 ---
@@ -14,10 +13,25 @@ description: my portfolio
     </style>
 
     <script src="/media/jquery.js"></script>
+    <script>
+      $(document).ready(function () {
+        $(".portfolio_item .item_description").hide();
+        $(".portfolio_item .item_summary").append(
+          "<a class='expand' href='' title='Show full description'>(more)</a>"
+          );
+        $(".portfolio_item .item_summary a.expand").click(
+          function (event) {
+            $(this).parents("p").next(".item_description").slideToggle("fast");
+            event.preventDefault();
+          }
+          );
+      }
+      );
+    </script>
   </head>    
   <body>
     <div id="header">
-      <h1>Hi. <em><a href="/">I'm Adam Lloyd</a></em></h1>
+      <h1>Hi. <em><a href="/">I'm Adam Lloyd.</a></em></h1>
       <div id="description">
         <p>I am a computer scientist in training at
         <abbr title="Rensselaer Polytechnic Institute">RPI</abbr>.</p>
