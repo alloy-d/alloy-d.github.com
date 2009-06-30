@@ -110,3 +110,6 @@ p#footer a:link, p#footer a:visited {
     font-size: 14pt;
     margin-top: 0;
 }
+.portfolio_item .item_summary a.expand {
+    color: #d5d5d5;
+}
