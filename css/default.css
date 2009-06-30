@@ -97,16 +97,16 @@ p#footer a:link, p#footer a:visited {
     display: none;
 }
 
-.post_info {
-    font-size: 8pt;
-    margin-top: -16px;
-    padding: 16px 0;
-}
-.post_info .symbol {
-    color: #d5d5d5;
-    text-transform: uppercase;
-}
-
+/* Style for text-only browsers (like lynx and links) */
 .text_only {
     display: none;
+}
+
+/* Portfolio styles */
+.portfolio_item h2 {
+    margin-bottom: 0;
+}
+.portfolio_item .item_summary {
+    font-size: 14pt;
+    margin-top: 0;
 }
