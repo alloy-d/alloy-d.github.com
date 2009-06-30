@@ -3,161 +3,184 @@ layout: default
 title: Portfolio
 description: my portfolio
 ---
-<div id="portfolio_content">
-  <div class="portfolio_item">
-    <h2>Cirqueti</h2>
-    <p class="item_summary">A site for writers.</p>
-    <div class="item_description">
-      <p>
-        Cirqueti is a website designed to make it easy for writers to
-        get their work online, build portfolios, and get critique.
-      </p>
-      <p>
-        Pieces of writing are added and revised through a simple,
-        unobtrusive editing interface. Portfolios offer writers a
-        simple &ldquo;about the author&rdquo; blurb, some contact
-        information, and the ability to &ldquo;showcase&rdquo; their
-        favorite authored items. The most important part of the system
-        is an innovative javascript critiquing interface that makes it
-        nearly effortless for anyone to pick a bit of text and comment
-        on it.
-      </p>
-      <p>
-        Cirqueti's implementation is currently being finished. It will
-        soon enter a small, private alpha testing phase before being
-        opened up in a public beta.
-      </p>
-      <p>
-        This project is a collaboration with Rory Marinich, who
-        planned and designed the interface; my task is developing the
-        backend. Cirqueti is implemented in Python using
-        the <a href="http://djangoproject.com/">Django Web framework</a>.
-      </p>
-    </div><!-- item_description -->
-  </div><!-- portfolio_item -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>Adam Lloyd - Portfolio</title>
+    <style type="text/css">
+@import url('/media/default.css');
+    </style>
+  </head>    
+  <body>
+    <div id="header">
+      <h1>Hi. <em><a href="/">I'm Adam Lloyd</a></em></h1>
+      <div id="description">
+        <p>I am a computer scientist in training at
+        <abbr title="Rensselaer Polytechnic Institute">RPI</abbr>.</p>
+        <p>This is my portfolio.</p>
+      </div>
+    </div>
 
-  <div class="portfolio_item">
-    <h2>Light City</h2>
-    <p class="item_summary">A Tumblr theme.</p>
-    <div class="item_description">
-      <p>
-        Light City is a theme
-        for <a href="http://tumblr.com/">Tumblr</a>, a popular
-        mixed-media blogging platform. It was forked from &ldquo;I
-        Like Lampposts&rdquo; to provide a much cleaner, simpler feel.
-      </p>
-      <p>
-        Since its acceptance into
-        the <a href="http://tumblr.com/themes/popular/">theme
-        garden</a> (Tumblr's repository of user-designed themes), it
-        has gained over 1,800 users.
-      </p>
-      <p>
-        A sample tumblelog using this theme is
-        available <a href="http://lightcitytheme.tumblr.com/">here</a>.
-      </p>
-    </div><!-- item_description -->
-  </div><!-- portfolio_item -->
+    <div id="content">
+      <div id="portfolio_content">
+        <div class="portfolio_item">
+          <h2>Cirqueti</h2>
+          <p class="item_summary">A site for writers.</p>
+          <div class="item_description">
+            <p>
+              Cirqueti is a website designed to make it easy for writers to
+              get their work online, build portfolios, and get critique.
+            </p>
+            <p>
+              Pieces of writing are added and revised through a simple,
+              unobtrusive editing interface. Portfolios offer writers a
+              simple &ldquo;about the author&rdquo; blurb, some contact
+              information, and the ability to &ldquo;showcase&rdquo; their
+              favorite authored items. The most important part of the system
+              is an innovative javascript critiquing interface that makes it
+              nearly effortless for anyone to pick a bit of text and comment
+              on it.
+            </p>
+            <p>
+              Cirqueti's implementation is currently being finished. It will
+              soon enter a small, private alpha testing phase before being
+              opened up in a public beta.
+            </p>
+            <p>
+              This project is a collaboration with Rory Marinich, who
+              planned and designed the interface; my task is developing the
+              backend. Cirqueti is implemented in Python using
+              the <a href="http://djangoproject.com/">Django Web framework</a>.
+            </p>
+          </div><!-- item_description -->
+        </div><!-- portfolio_item -->
 
-  <div class="portfolio_item">
-    <h2>I Like Lampposts</h2>
-    <p class="item_summary">A Tumblr theme.</p>
-    <div class="item_description">
-      <p>
-        I Like Lampposts is another Tumblr theme that I created, based
-        on, well, lampposts. Using nearly the same clean
-        <abbr title="HyperText Markup Language">HTML</abbr> code as
-        Light City, it provides an entirely different visual layout
-        and feel.
-      </p>
-      <p>
-        This theme is unfinished and has therefore not been submitted
-        to Tumblr's theme garden. It can be seen in use
-        on <a href="http://ilikelampposts.tumblr.com">a sample
-        tumblelog</a> in its partially completed state, however.
-      </p>
-    </div><!-- item_description -->
-  </div><!-- portfolio_item -->
+        <div class="portfolio_item">
+          <h2>Light City</h2>
+          <p class="item_summary">A Tumblr theme.</p>
+          <div class="item_description">
+            <p>
+              Light City is a theme
+              for <a href="http://tumblr.com/">Tumblr</a>, a popular
+              mixed-media blogging platform. It was forked from &ldquo;I
+              Like Lampposts&rdquo; to provide a much cleaner, simpler feel.
+            </p>
+            <p>
+              Since its acceptance into
+              the <a href="http://tumblr.com/themes/popular/">theme
+                garden</a> (Tumblr's repository of user-designed themes), it
+              has gained over 1,800 users.
+            </p>
+            <p>
+              A sample tumblelog using this theme is
+              available <a href="http://lightcitytheme.tumblr.com/">here</a>.
+            </p>
+          </div><!-- item_description -->
+        </div><!-- portfolio_item -->
 
-  <div class="portfolio_item">
-    <h2>Not a Douche</h2>
-    <p class="item_summary">A viral website.</p>
-    <div class="item_description">
-      <p>
-        Not a Douche describes itself as a sort of
-        &ldquo;antiFacebook&rdquo;. Its stated idea is to
-        &ldquo;discourage interaction with other people&rdquo;.
-      </p>
-      <p>
-        The interface is simple: just enter your name, then answer a
-        series of questions you would probably never be asked by a
-        real social networking site. When you've finished, you're
-        taken to your &ldquo;profile&rdquo;, populated with your
-        responses, and given a <abbr title="Uniform Resource
-        Locator">URL</abbr> to hand out to those whom you think might
-        be interested.
-      </p>
-      <p>
-        This was a quick, simple experiment to get my hands dirty in
-        building Web apps, written in <abbr title="the Hypertext
-        PreProcessor">PHP</abbr>. Within a few hours of its launch,
-        however, the website had amassed several thousands of
-        users&mdash;by no means other than word of mouth. It was also
-        featured on several radio stations.
-      </p>
-      <p>
-        This project was a collaboration with Rory Marinich, who
-        handled the site's design. You can find Not a Douche
-        at <a href="http://notadouche.com/">notadouche.com</a>. <em>(Note:
-        it is unmaintained, and changes in the database setup have
-        rendered it mostly dysfunctional for the moment.)</em>
-      </p>
-    </div><!-- item_description -->
-  </div><!-- portfolio_item -->
+        <div class="portfolio_item">
+          <h2>I Like Lampposts</h2>
+          <p class="item_summary">A Tumblr theme.</p>
+          <div class="item_description">
+            <p>
+              I Like Lampposts is another Tumblr theme that I created, based
+              on, well, lampposts. Using nearly the same clean
+              <abbr title="HyperText Markup Language">HTML</abbr> code as
+              Light City, it provides an entirely different visual layout
+              and feel.
+            </p>
+            <p>
+              This theme is unfinished and has therefore not been submitted
+              to Tumblr's theme garden. It can be seen in use
+              on <a href="http://ilikelampposts.tumblr.com">a sample
+                tumblelog</a> in its partially completed state, however.
+            </p>
+          </div><!-- item_description -->
+        </div><!-- portfolio_item -->
 
-  <div class="portfolio_item">
-    <h2>Hash</h2>
-    <p class="item_summary">A Tumblr theme.</p>
-    <div class="item_description">
-      <p>
-        Hash was the first theme I created for Tumblr.
-      </p>
-      <p>
-        It was thrown together quickly because I wanted a simple
-        personal theme. The design is somewhat reminiscent of a Perl
-        or shell script.
-      </p>
-      <p>
-        Hash is available in Tumblr's theme garden and currently has
-        over 160 users. A sample tumblelog made for it can be found
-        <a href="http://hashtheme.tumblr.com/">here</a>.
-      </p>
-    </div><!-- item_description -->
-  </div><!-- portfolio_item -->
+        <div class="portfolio_item">
+          <h2>Not a Douche</h2>
+          <p class="item_summary">A viral website.</p>
+          <div class="item_description">
+            <p>
+              Not a Douche describes itself as a sort of
+              &ldquo;antiFacebook&rdquo;. Its stated idea is to
+              &ldquo;discourage interaction with other people&rdquo;.
+            </p>
+            <p>
+              The interface is simple: just enter your name, then answer a
+              series of questions you would probably never be asked by a
+              real social networking site. When you've finished, you're
+              taken to your &ldquo;profile&rdquo;, populated with your
+              responses, and given a <abbr title="Uniform Resource
+                                                  Locator">URL</abbr> to hand out to those whom you think might
+              be interested.
+            </p>
+            <p>
+              This was a quick, simple experiment to get my hands dirty in
+              building Web apps, written in <abbr title="the Hypertext
+                                                         PreProcessor">PHP</abbr>. Within a few hours of its launch,
+              however, the website had amassed several thousands of
+              users&mdash;by no means other than word of mouth. It was also
+              featured on several radio stations.
+            </p>
+            <p>
+              This project was a collaboration with Rory Marinich, who
+              handled the site's design. You can find Not a Douche
+              at <a href="http://notadouche.com/">notadouche.com</a>. <em>(Note:
+                it is unmaintained, and changes in the database setup have
+                rendered it mostly dysfunctional for the moment.)</em>
+            </p>
+          </div><!-- item_description -->
+        </div><!-- portfolio_item -->
 
-  <div class="portfolio_item">
-    <h2>LectureNotes</h2>
-    <p class="item_summary">An application for students.</p>
-    <div class="item_description">
-      <p>
-        LectureNotes is a system designed to make electronic in-class
-        note-taking both feasible for students and more effective than
-        traditional paper-based methods.
-      </p>
-      <p>
-        The system consists of an efficient, rich editor and an
-        <abbr title="eXtensible Markup Language">XML</abbr> vocabulary
-        to describe notes. The interface aims to be extremely
-        user-customizable and provide an effectively
-        &ldquo;lossless&rdquo; storage format that maintains
-        contextual information in addition to a simple notes tree.
-      </p>
-      <p>
-        This project was initiated through the Rensselaer Center for
-        Open Source. Its (currently <em>very</em> incomplete) source
-        and further information are available from
-        its <a href="http://code.google.com/p/lecture-notes/">homepage</a>.
-      </p>
-    </div><!-- item_description -->
-  </div><!-- portfolio_item -->
-</div><!-- portfolio_content -->
+        <div class="portfolio_item">
+          <h2>Hash</h2>
+          <p class="item_summary">A Tumblr theme.</p>
+          <div class="item_description">
+            <p>
+              Hash was the first theme I created for Tumblr.
+            </p>
+            <p>
+              It was thrown together quickly because I wanted a simple
+              personal theme. The design is somewhat reminiscent of a Perl
+              or shell script.
+            </p>
+            <p>
+              Hash is available in Tumblr's theme garden and currently has
+              over 160 users. A sample tumblelog made for it can be found
+              <a href="http://hashtheme.tumblr.com/">here</a>.
+            </p>
+          </div><!-- item_description -->
+        </div><!-- portfolio_item -->
+
+        <div class="portfolio_item">
+          <h2>LectureNotes</h2>
+          <p class="item_summary">An application for students.</p>
+          <div class="item_description">
+            <p>
+              LectureNotes is a system designed to make electronic in-class
+              note-taking both feasible for students and more effective than
+              traditional paper-based methods.
+            </p>
+            <p>
+              The system consists of an efficient, rich editor and an
+              <abbr title="eXtensible Markup Language">XML</abbr> vocabulary
+              to describe notes. The interface aims to be extremely
+              user-customizable and provide an effectively
+              &ldquo;lossless&rdquo; storage format that maintains
+              contextual information in addition to a simple notes tree.
+            </p>
+            <p>
+              This project was initiated through the Rensselaer Center for
+              Open Source. Its (currently <em>very</em> incomplete) source
+              and further information are available from
+              its <a href="http://code.google.com/p/lecture-notes/">homepage</a>.
+            </p>
+          </div><!-- item_description -->
+        </div><!-- portfolio_item -->
+      </div><!-- portfolio_content -->
+    </div><!-- content -->
+  </body>
+</html>
