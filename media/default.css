@@ -31,6 +31,7 @@ h2, p.prominent {
     font-size: 20pt;
     font-weight: normal;
     line-height: 1.1em;
+    text-shadow: #c0c0c0 0 0 4px;
 }
 p {
     margin: 1em 0;
@@ -65,6 +66,7 @@ div#header h1 {
 div#header em {
     color: #000000;
     font-style: normal;
+    text-shadow: #c0c0c0 0 0 8px;
 }
 div#header a:link, div#header a:visited {
     color: #000000;
