@@ -1,0 +1,28 @@
+@import url("http://fonts.googleapis.com/css?family=Molengo");
+
+header, aside, footer, nav, section, article {
+    display: block;
+}
+
+body {
+    background-color: #eeeeee;
+    color: #7d0000;
+    font-family: "Molengo", sans-serif;
+    font-size: 100%;
+    margin: 0;
+}
+
+article {
+    font-size: 1.5em;
+    margin: 0 auto;
+    width: 33em;
+}
+
+article p {
+    margin-bottom: 0;
+}
+
+article p + p {
+    margin-top: 0;
+    text-indent: 1.5em;
+}

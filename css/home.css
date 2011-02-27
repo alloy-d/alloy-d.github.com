@@ -1,14 +1,4 @@
-header, aside, footer, nav, section, article {
-    display: block;
-}
-
-body {
-    background-color: #eeeeee;
-    color: #7d0000;
-    font-family: "Molengo", sans-serif;
-    font-size: 100%;
-    margin: 0;
-}
+@import url("/css/basic.css");
 
 a:link, a:visited {
     color: #ffffff;
