@@ -3,7 +3,7 @@ header, aside, footer, nav, section, article {
 }
 
 body {
-    background-color: #ffffff;
+    background-color: #eeeeee;
     color: #7d0000;
     font-family: "Molengo", sans-serif;
     font-size: 100%;
@@ -12,6 +12,7 @@ body {
 
 a:link, a:visited {
     color: #ffffff;
+    font-style: italic;
     text-decoration: none;
 }
 a:link:hover, a:visited:hover {
@@ -39,7 +40,8 @@ a:link:hover, a:visited:hover {
 }
 
 header.ottoman {
-    right: 15px;
+    //right: 15px;
+    right: 180px;
     text-transform: uppercase;
 }
 
@@ -51,10 +53,37 @@ header.ottoman h1 {
     font-size: 1.4em;
     font-style: italic;
     font-weight: bold;
-    right: 180px;
+    //right: 180px;
+    right: 15px;
 }
 
 #links ul {
     list-style-type: none;
     padding: 0;
+}
+
+section#about {
+    background-color: #7d0000;
+    color: #ffffff;
+    font-size: 1.5em;
+    line-height: 1.5;
+    position: absolute;
+    top: 100%;
+    width: 100%;
+}
+
+section#about #sillyContainer {
+    margin: 0 auto;
+    padding: 2em;
+    width: 24em;
+}
+
+section#about p {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+section#about p + p {
+    margin-top: 0;
+    text-indent: 1.5em;
 }
