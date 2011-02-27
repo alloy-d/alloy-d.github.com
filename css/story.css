@@ -1,0 +1,18 @@
+@import url("/css/basic.css");
+
+body {
+    color: #000000;
+}
+
+article {
+    padding-bottom: 4em;
+    width: 28em;
+}
+
+article header h1 {
+    color: #7d0000;
+}
+
+article p {
+    line-height: 1.5;
+}
