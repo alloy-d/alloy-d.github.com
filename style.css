@@ -1,0 +1,60 @@
+header, aside, footer, nav, section, article {
+    display: block;
+}
+
+body {
+    background-color: #ffffff;
+    color: #7d0000;
+    font-family: "Molengo", sans-serif;
+    font-size: 100%;
+    margin: 0;
+}
+
+a:link, a:visited {
+    color: #ffffff;
+    text-decoration: none;
+}
+a:link:hover, a:visited:hover {
+    font-style: normal;
+}
+
+.ottoman {
+    background-color: #7d0000;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    -moz-border-radius-topright: 5px;
+    -moz-border-radius-topleft: 5px;
+    -webkit-border-top-right-radius: 5px;
+    -webkit-border-top-left-radius: 5px;
+    bottom: 0;
+    box-shadow: 0 0 8px #777777;
+    -moz-box-shadow: 0 0 8px #777777;
+    -webkit-box-shadow: 0 0 8px #777777;
+    color: #ffffff;
+    height: 140px;
+    min-width: 140px;
+    position: absolute;
+    text-align: center;
+    width: 150px;
+}
+
+header.ottoman {
+    right: 15px;
+    text-transform: uppercase;
+}
+
+header.ottoman h1 {
+    font-size: 2.1em;
+}
+
+#links.ottoman {
+    font-size: 1.4em;
+    font-style: italic;
+    font-weight: bold;
+    right: 180px;
+}
+
+#links ul {
+    list-style-type: none;
+    padding: 0;
+}
