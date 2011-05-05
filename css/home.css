@@ -43,8 +43,8 @@ p[lang=ja] span.line {
 }
 
 section#about {
-    bottom: 30px;
-    left: 30px;
+    bottom: 20px;
+    left: 20px;
     position: absolute;
 }
 
@@ -58,11 +58,11 @@ section#about pre {
 }
 
 section#links {
-    bottom: 30px;
+    bottom: 20px;
     font-family: "Inconsolata", monospace;
     font-size: 16px;
     position: absolute;
-    right: 30px;
+    right: 20px;
     text-align: right;
 }
 
