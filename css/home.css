@@ -49,7 +49,33 @@ section#about {
 }
 
 section#about pre {
+    margin: 0;
+}
+
+.monospace, pre {
+    font-size: 16px;
+    font-family: "Inconsolata", monospace;
+}
+
+section#links {
+    bottom: 30px;
     font-family: "Inconsolata", monospace;
     font-size: 16px;
+    position: absolute;
+    right: 30px;
+    text-align: right;
+}
+
+section#links ul {
+    list-style-type: none;
     margin: 0;
+}
+
+section#links ul li {
+    display: inline-block;
+    margin: 0 4px;
+}
+
+a:link, a:visited {
+    color: inherit;
 }
