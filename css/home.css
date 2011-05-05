@@ -1,73 +1,55 @@
 @import url("/css/basic.css");
 
-header {
-    border-bottom: 2px solid #dddde0;
-    margin: 0 auto;
-    margin-bottom: 4em;
-    padding-bottom: 4px;
-    width: 36em;
+body {
+    padding: 20px;
 }
 
-h1 {
-    border-bottom: 1px solid #dddde0;
-    color: #aaaab0;
-    font-size: 6em;
-    font-weight: 100;
-    margin-top: 0.3em;
-    margin-bottom: 0;
-    padding-bottom: 0.2em;
-    text-align: center;
-}
-
-div#links {
-    margin: 0 auto;
-    text-align: center;
-}
-
-div#links ul {
-    font-size: 2em;
-    list-style-type: none;
+header p {
+    font-size: 36px;
     margin: 0;
-    padding: 0;
-    text-transform: uppercase;
 }
 
-div#links ul li {
+span.name {
+    color: #8899ee;
     display: inline;
-    line-height: 0.6em;
-    margin: 0 0.7em;
 }
 
-div#links a:link, div#links a:visited {
-    color: #bbbbc0;
-    text-decoration: none;
+p[lang=en], p[lang=es], p[lang=ja] {
+    clear: right;
+    float: right;
 }
 
-div#links a:link:hover, div#links a:visited:hover {
-    color: #888890;
+p[lang=ja] {
+    font-family: "Firefly", "AR PL New Sung", serif;
+    margin-top: 10px;
+}
+
+p[lang=ja] span.name {
+    display: inline-block;
+    width: 36px;
+}
+
+p[lang=ja] span.name_separator,
+p[lang=ja] span.end_of_sentence {
+    display: inline-block;
+    width: 36px;
+}
+
+p[lang=ja] span.line {
+    display: block;
+    float: right;
+    padding: 0 6px;
+    width: 36px;
 }
 
 section#about {
-    font-size: 1.2em;
-    margin: 0 auto;
-    margin-top: 3em;
-    width: 25em;
+    bottom: 30px;
+    left: 30px;
+    position: absolute;
 }
 
-section#about p {
-    margin-top: 0;
-    margin-bottom: 0;
-}
-
-section#about p + p {
-    margin-top: 0;
-    text-indent: 1.5em;
-}
-
-section#about a:link, section#about a:visited {
-    border-bottom: 1px solid #dddde0;
-    //color: #777777;
-    color: inherit;
-    margin-bottom: -1px;
-    text-decoration: none;
+section#about pre {
+    font-family: "Inconsolata", monospace;
+    font-size: 16px;
+    margin: 0;
 }
