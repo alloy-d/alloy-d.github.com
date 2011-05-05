@@ -1,13 +1,13 @@
-@import url("http://fonts.googleapis.com/css?family=Molengo");
+@import url("http://fonts.googleapis.com/css?family=Cardo");
 
 header, aside, footer, nav, section, article {
     display: block;
 }
 
 body {
-    background-color: #eeeeee;
-    color: #7d0000;
-    font-family: "Molengo", sans-serif;
+    background-color: #fafaff;
+    color: #777777;
+    font-family: "Cardo", serif;
     font-size: 100%;
     margin: 0;
 }

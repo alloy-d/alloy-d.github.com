@@ -1,71 +1,57 @@
 @import url("/css/basic.css");
 
-a:link, a:visited {
-    color: #ffffff;
-    font-style: italic;
-    text-decoration: none;
-}
-a:link:hover, a:visited:hover {
-    font-style: normal;
+header {
+    border-bottom: 2px solid #dddde0;
+    margin: 0 auto;
+    margin-bottom: 4em;
+    padding-bottom: 4px;
+    width: 36em;
 }
 
-.ottoman {
-    background-color: #7d0000;
-    border-top-right-radius: 5px;
-    border-top-left-radius: 5px;
-    -moz-border-radius-topright: 5px;
-    -moz-border-radius-topleft: 5px;
-    -webkit-border-top-right-radius: 5px;
-    -webkit-border-top-left-radius: 5px;
-    bottom: 0;
-    box-shadow: 0 0 8px #777777;
-    -moz-box-shadow: 0 0 8px #777777;
-    -webkit-box-shadow: 0 0 8px #777777;
-    color: #ffffff;
-    height: 140px;
-    min-width: 140px;
-    position: absolute;
+h1 {
+    border-bottom: 1px solid #dddde0;
+    color: #aaaab0;
+    font-size: 6em;
+    font-weight: 100;
+    margin-top: 0.3em;
+    margin-bottom: 0;
+    padding-bottom: 0.2em;
     text-align: center;
-    width: 150px;
 }
 
-header.ottoman {
-    //right: 15px;
-    right: 180px;
+div#links {
+    margin: 0 auto;
+    text-align: center;
+}
+
+div#links ul {
+    font-size: 2em;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
     text-transform: uppercase;
 }
 
-header.ottoman h1 {
-    font-size: 2.1em;
+div#links ul li {
+    display: inline;
+    line-height: 0.6em;
+    margin: 0 0.7em;
 }
 
-#links.ottoman {
-    font-size: 1.4em;
-    font-style: italic;
-    font-weight: bold;
-    //right: 180px;
-    right: 15px;
+div#links a:link, div#links a:visited {
+    color: #bbbbc0;
+    text-decoration: none;
 }
 
-#links ul {
-    list-style-type: none;
-    padding: 0;
+div#links a:link:hover, div#links a:visited:hover {
+    color: #888890;
 }
 
 section#about {
-    background-color: #7d0000;
-    color: #ffffff;
-    font-size: 1.5em;
-    line-height: 1.5;
-    position: absolute;
-    top: 100%;
-    width: 100%;
-}
-
-section#about #sillyContainer {
+    font-size: 1.2em;
     margin: 0 auto;
-    padding: 2em;
-    width: 24em;
+    margin-top: 3em;
+    width: 25em;
 }
 
 section#about p {
@@ -76,4 +62,12 @@ section#about p {
 section#about p + p {
     margin-top: 0;
     text-indent: 1.5em;
+}
+
+section#about a:link, section#about a:visited {
+    border-bottom: 1px solid #dddde0;
+    //color: #777777;
+    color: inherit;
+    margin-bottom: -1px;
+    text-decoration: none;
 }
