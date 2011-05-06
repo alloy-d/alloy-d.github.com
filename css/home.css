@@ -19,6 +19,10 @@ p[lang=en], p[lang=es], p[lang=ja] {
     float: right;
 }
 
+p[lang=en], p[lang=es] {
+    line-height: 1.5;
+}
+
 p[lang=ja] {
     font-family: "Firefly", "DFKai-SB", "AR PL New Sung", serif;
     margin-top: 10px;
