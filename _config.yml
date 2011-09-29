@@ -1,0 +1,5 @@
+auto: false
+server: false
+
+source: .
+destination: ./_site

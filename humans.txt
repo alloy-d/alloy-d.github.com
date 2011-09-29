@@ -1,0 +1,11 @@
+/* AUTHOR */
+        Dude: Adam Lloyd
+        Contact: adam [at] alloy-d.net
+        Twitter: @lloyda2
+        From: College Park, MD, USA
+
+/* SITE */
+        Last update: a long time ago
+        Language: English
+        Doctype: HTML5
+        Editor: VIM
