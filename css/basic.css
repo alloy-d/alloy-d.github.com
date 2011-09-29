@@ -1,0 +1,29 @@
+@import url("http://fonts.googleapis.com/css?family=Cardo");
+@import url("http://fonts.googleapis.com/css?family=Inconsolata");
+
+header, aside, footer, nav, section, article {
+    display: block;
+}
+
+body {
+    background-color: #fafaff;
+    color: #777777;
+    font-family: "Cardo", serif;
+    font-size: 100%;
+    margin: 0;
+}
+
+article {
+    font-size: 1.5em;
+    margin: 0 auto;
+    width: 33em;
+}
+
+article p {
+    margin-bottom: 0;
+}
+
+article p + p {
+    margin-top: 0;
+    text-indent: 1.5em;
+}
