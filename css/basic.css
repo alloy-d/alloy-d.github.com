@@ -1,5 +1,4 @@
-@import url("http://fonts.googleapis.com/css?family=Cardo");
-@import url("http://fonts.googleapis.com/css?family=Inconsolata");
+@import url('/css/fonts.css');
 
 header, aside, footer, nav, section, article {
     display: block;
@@ -8,7 +7,7 @@ header, aside, footer, nav, section, article {
 body {
     background-color: #fafaff;
     color: #777777;
-    font-family: "Cardo", serif;
+    font-family: "Actor", sans-serif;
     font-size: 100%;
     margin: 0;
 }
