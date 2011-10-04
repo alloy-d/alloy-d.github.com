@@ -1,5 +1,5 @@
-auto: false
-server: false
+auto: true
+server: true
 
 source: .
 destination: ./_site
