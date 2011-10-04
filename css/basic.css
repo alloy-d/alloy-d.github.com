@@ -1,0 +1,28 @@
+@import url('/css/fonts.css');
+header,
+aside,
+footer,
+nav,
+section,
+article {
+  display: block;
+}
+body {
+  background-color: #fafaff;
+  color: #777777;
+  font-family: "Actor", sans-serif;
+  font-size: 100%;
+  margin: 0;
+}
+article {
+  font-size: 1.5em;
+  margin: 0 auto;
+  width: 33em;
+}
+article p {
+  margin-bottom: 0;
+}
+article p + p {
+  margin-top: 0;
+  text-indent: 1.5em;
+}

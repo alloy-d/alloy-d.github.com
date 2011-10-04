@@ -1,0 +1,8 @@
+@import url('/css/basic.css');
+body {
+  margin: 2em;
+}
+h1 {
+  font-family: "Sorts Mill Goudy", serif;
+  font-weight: 400;
+}
