@@ -1,10 +1,52 @@
-@import url('/css/basic.css');
+@import url('basic.less');
 
 body {
   margin: 2em;
 }
 
-h1 {
-  font-family: "Sorts Mill Goudy", serif;
-  font-weight: 400;
+header {
+  border-bottom: 0.3em solid @foreground;
+  margin: 0 auto;
+  width: 24em;
+
+  h1#name {
+    color: @foreground;
+    font-family: "Sorts Mill Goudy", serif;
+    font-size: 2.6em;
+    font-weight: 400;
+    text-align: center;
+    margin-bottom: 0.2em;
+  }
+}
+
+section {
+  font-size: 1.2em;
+}
+#about > pre {
+  font-family: "Actor", sans-serif;
+  text-align: center;
+}
+
+#links > ul {
+  font-family: "Actor", sans-serif;
+  list-style-type: none;
+  margin-left: 0;
+  padding-left: 0;
+  text-align: center;
+
+  li {
+    display: inline-block;
+    margin: 0 0.2em;
+  }
+
+  a:link, a:visited {
+    color: @foreground;
+    text-decoration: underline;
+
+    &:hover {
+      text-shadow: @background 0 0 1px, @accent 0 0 20px;
+      //text-shadow: #000000 0 0 2px, #ffffff 0 0 1px;
+      //text-shadow: #000000 0 0 40px;
+    }
+  }
 }

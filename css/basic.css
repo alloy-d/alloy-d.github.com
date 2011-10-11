@@ -8,9 +8,9 @@ article {
   display: block;
 }
 body {
-  background-color: #fafaff;
-  color: #777777;
-  font-family: "Actor", sans-serif;
+  background-color: white;
+  color: black;
+  font-family: "Actor", serif;
   font-size: 100%;
   margin: 0;
 }

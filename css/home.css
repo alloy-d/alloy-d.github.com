@@ -1,8 +1,69 @@
-@import url('/css/basic.css');
+@import url('/css/fonts.css');
+header,
+aside,
+footer,
+nav,
+section,
+article {
+  display: block;
+}
+body {
+  background-color: white;
+  color: black;
+  font-family: "Actor", serif;
+  font-size: 100%;
+  margin: 0;
+}
+article {
+  font-size: 1.5em;
+  margin: 0 auto;
+  width: 33em;
+}
+article p {
+  margin-bottom: 0;
+}
+article p + p {
+  margin-top: 0;
+  text-indent: 1.5em;
+}
 body {
   margin: 2em;
 }
-h1 {
+header {
+  border-bottom: 0.3em solid black;
+  margin: 0 auto;
+  width: 24em;
+}
+header h1#name {
+  color: black;
   font-family: "Sorts Mill Goudy", serif;
+  font-size: 2.6em;
   font-weight: 400;
+  text-align: center;
+  margin-bottom: 0.2em;
+}
+section {
+  font-size: 1.2em;
+}
+#about > pre {
+  font-family: "Actor", sans-serif;
+  text-align: center;
+}
+#links > ul {
+  font-family: "Actor", sans-serif;
+  list-style-type: none;
+  margin-left: 0;
+  padding-left: 0;
+  text-align: center;
+}
+#links > ul li {
+  display: inline-block;
+  margin: 0 0.2em;
+}
+#links > ul a:link, #links > ul a:visited {
+  color: black;
+  text-decoration: underline;
+}
+#links > ul a:link:hover, #links > ul a:visited:hover {
+  text-shadow: white 0 0 1px, #7e9ebd 0 0 20px;
 }
