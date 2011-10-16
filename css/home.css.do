@@ -1,4 +1,4 @@
-lessfile() { echo "../_less/$1.less"; }
+source lessrules.do.sh
 redo-ifchange $(lessfile home)
 redo-ifchange $(lessfile basic)
 
