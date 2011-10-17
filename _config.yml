@@ -3,3 +3,5 @@ server: true
 
 source: .
 destination: ./_site
+
+permalink: /:categories/:title/
