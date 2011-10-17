@@ -23,12 +23,12 @@ section {
   font-size: 1.2em;
 }
 #about > pre {
-  font-family: "Actor", sans-serif;
+  font-family: $bodyFont;
   text-align: center;
 }
 
 #links > ul {
-  font-family: "Actor", sans-serif;
+  font-family: $bodyFont;
   list-style-type: none;
   margin-left: 0;
   padding-left: 0;
