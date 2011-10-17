@@ -16,7 +16,7 @@ body {
 }
 article {
   margin: 0 auto;
-  width: 33em;
+  width: 37em;
 }
 article p {
   margin-bottom: 0;
@@ -28,14 +28,27 @@ article p + p {
 body {
   margin: 2em;
 }
+header {
+  border-bottom: thin solid #7e9ebd;
+}
 header h1 {
   color: #1a100c;
   font-family: "Sorts Mill Goudy", serif;
   font-size: 2.6em;
   font-weight: 400;
   font-style: italic;
-  margin-bottom: 0.2em;
+  margin-bottom: -0.5em;
 }
 article {
   line-height: 1.5;
+}
+article p {
+  margin-left: auto;
+  text-align: justify;
+  width: 30em;
+}
+article hr {
+  border: none;
+  border-bottom: thin dotted #7e9ebd;
+  width: 60%;
 }
