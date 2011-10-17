@@ -6,14 +6,9 @@ header, aside, footer, nav, section, article {
 body {
   background-color: #fdfeff;
   color: #1a100c;
-  font-family: "Actor", serif;
+  font-family: "Poly", serif;
   font-size: 100%;
   margin: 0;
-}
-
-article {
-  margin: 0 auto;
-  width: 37em;
 }
 
 article p {
@@ -31,6 +26,7 @@ body {
 
 header {
   border-bottom: thin solid #7e9ebd;
+  margin-bottom: 1.5em;
 }
 header h1 {
   color: #1a100c;
@@ -40,12 +36,21 @@ header h1 {
   font-style: italic;
   margin-bottom: -0.5em;
 }
+header time {
+  color: #7e9ebd;
+  float: right;
+  font-family: "Actor", sans-serif;
+  position: relative;
+  top: -0.1em;
+}
 
 article {
+  font-family: "Poly", serif;
   line-height: 1.5;
+  margin: 0 auto;
+  width: 40em;
 }
 article p {
-  margin-left: auto;
   text-align: justify;
   width: 30em;
 }
@@ -53,4 +58,7 @@ article hr {
   border: none;
   border-bottom: thin dotted #7e9ebd;
   width: 60%;
+}
+article pre.poetry {
+  font-family: "Poly", serif;
 }

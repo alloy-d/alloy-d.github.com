@@ -6,14 +6,9 @@ header, aside, footer, nav, section, article {
 body {
   background-color: #fdfeff;
   color: #1a100c;
-  font-family: "Actor", serif;
+  font-family: "Poly", serif;
   font-size: 100%;
   margin: 0;
-}
-
-article {
-  margin: 0 auto;
-  width: 37em;
 }
 
 article p {

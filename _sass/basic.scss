@@ -8,17 +8,14 @@ $accent: #7e9ebd;
 $foreground: #1A100C;
 $background: #fdfeff;
 
+$bodyFont: "Poly", serif;
+
 body {
   background-color: $background;
   color: $foreground;
-  font-family: "Actor", serif;
+  font-family: $bodyFont;
   font-size: 100%;
   margin: 0;
-}
-
-article {
-  margin: 0 auto;
-  width: 37em;
 }
 
 article p {

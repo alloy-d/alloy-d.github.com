@@ -6,6 +6,7 @@ body {
 
 header {
   border-bottom: thin solid $accent;
+  margin-bottom: 1.5em;
   h1 {
     color: $foreground;
     font-family: "Sorts Mill Goudy", serif;
@@ -14,13 +15,23 @@ header {
     font-style: italic;
     margin-bottom: -0.5em;
   }
+
+  time {
+    color: $accent;
+    float: right;
+    font-family: "Actor", sans-serif;
+    position: relative;
+    top: -0.1em;
+  }
 }
 
 article {
+  font-family: $bodyFont;
   line-height: 1.5;
+  margin: 0 auto;
+  width: 40em;
 
   p {
-    margin-left: auto;
     text-align: justify;
     width: 30em;
   }
@@ -29,5 +40,9 @@ article {
     border: none;
     border-bottom: thin dotted $accent;
     width: 60%;
+  }
+
+  pre.poetry {
+    font-family: $bodyFont;
   }
 }
