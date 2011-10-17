@@ -1,13 +1,13 @@
-@import url('basic.less');
+@import "basic";
 
 body {
   margin: 2em;
 }
 
 header {
-  border-bottom: thin solid @accent;
+  border-bottom: thin solid $accent;
   h1 {
-    color: @foreground;
+    color: $foreground;
     font-family: "Sorts Mill Goudy", serif;
     font-size: 2.6em;
     font-weight: 400;
@@ -27,7 +27,7 @@ article {
 
   hr {
     border: none;
-    border-bottom: thin dotted @accent;
+    border-bottom: thin dotted $accent;
     width: 60%;
   }
 }

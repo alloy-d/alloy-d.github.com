@@ -1,16 +1,16 @@
-@import url('basic.less');
+@import "basic";
 
 body {
   margin: 2em;
 }
 
 header {
-  border-bottom: 0.3em solid @foreground;
+  border-bottom: 0.3em solid $foreground;
   margin: 0 auto;
   width: 24em;
 
   h1#name {
-    color: @foreground;
+    color: $foreground;
     font-family: "Sorts Mill Goudy", serif;
     font-size: 2.6em;
     font-weight: 400;
@@ -40,11 +40,11 @@ section {
   }
 
   a:link, a:visited {
-    color: @foreground;
+    color: $foreground;
     text-decoration: underline;
 
     &:hover {
-      text-shadow: @background 0 0 1px, @accent 0 0 20px;
+      text-shadow: $background 0 0 1px, $accent 0 0 20px;
       //text-shadow: #000000 0 0 2px, #ffffff 0 0 1px;
       //text-shadow: #000000 0 0 40px;
     }

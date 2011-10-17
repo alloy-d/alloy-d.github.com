@@ -1,11 +1,16 @@
 @import url('/css/fonts.css');
+
 header, aside, footer, nav, section, article {
   display: block;
 }
 
+$accent: #7e9ebd;
+$foreground: #1A100C;
+$background: #fdfeff;
+
 body {
-  background-color: #fdfeff;
-  color: #1a100c;
+  background-color: $background;
+  color: $foreground;
   font-family: "Actor", serif;
   font-size: 100%;
   margin: 0;

@@ -1,12 +1,8 @@
 @import url('/css/fonts.css');
-header,
-aside,
-footer,
-nav,
-section,
-article {
+header, aside, footer, nav, section, article {
   display: block;
 }
+
 body {
   background-color: #fdfeff;
   color: #1a100c;
@@ -14,20 +10,25 @@ body {
   font-size: 100%;
   margin: 0;
 }
+
 article {
   margin: 0 auto;
   width: 37em;
 }
+
 article p {
   margin-bottom: 0;
 }
+
 article p + p {
   margin-top: 0;
   text-indent: 1.5em;
 }
+
 body {
   margin: 2em;
 }
+
 header {
   border-bottom: thin solid #7e9ebd;
 }
@@ -39,6 +40,7 @@ header h1 {
   font-style: italic;
   margin-bottom: -0.5em;
 }
+
 article {
   line-height: 1.5;
 }

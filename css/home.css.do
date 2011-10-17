@@ -1,6 +1,6 @@
-source lessrules.do.sh
-redo-ifchange $(lessfile home)
-redo-ifchange $(lessfile basic)
+source sassrules.do.sh
+redo-ifchange $(sass_file home)
+redo-ifchange $(sass_file basic)
 
-lessc $(lessfile home) $3
+sass_compile $(sass_file home) $3
 

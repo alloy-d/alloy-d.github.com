@@ -1,12 +1,8 @@
 @import url('/css/fonts.css');
-header,
-aside,
-footer,
-nav,
-section,
-article {
+header, aside, footer, nav, section, article {
   display: block;
 }
+
 body {
   background-color: #fdfeff;
   color: #1a100c;
@@ -14,21 +10,25 @@ body {
   font-size: 100%;
   margin: 0;
 }
+
 article {
-  font-size: 1.5em;
   margin: 0 auto;
-  width: 33em;
+  width: 37em;
 }
+
 article p {
   margin-bottom: 0;
 }
+
 article p + p {
   margin-top: 0;
   text-indent: 1.5em;
 }
+
 body {
   margin: 2em;
 }
+
 header {
   border-bottom: 0.3em solid #1a100c;
   margin: 0 auto;
@@ -42,13 +42,16 @@ header h1#name {
   text-align: center;
   margin-bottom: 0.2em;
 }
+
 section {
   font-size: 1.2em;
 }
+
 #about > pre {
   font-family: "Actor", sans-serif;
   text-align: center;
 }
+
 #links > ul {
   font-family: "Actor", sans-serif;
   list-style-type: none;
