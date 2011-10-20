@@ -1,12 +1,20 @@
 @import url('/css/fonts.css');
+
 header, aside, footer, nav, section, article {
   display: block;
 }
 
+$accent: #7e9ebd;
+$foreground: #1A100C;
+$background: #fdfeff;
+
+$headerFont: "Sorts Mill Goudy", serif;
+$bodyFont: "Poly", serif;
+
 body {
-  background-color: #fdfeff;
-  color: #1a100c;
-  font-family: "Poly", serif;
+  background-color: $background;
+  color: $foreground;
+  font-family: $bodyFont;
   font-size: 100%;
   margin: 0;
 }
