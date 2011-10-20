@@ -11,7 +11,7 @@ header {
 
   h1#name {
     color: $foreground;
-    font-family: "Sorts Mill Goudy", serif;
+    font-family: $headerFont;
     font-size: 2.6em;
     font-weight: 400;
     text-align: center;
