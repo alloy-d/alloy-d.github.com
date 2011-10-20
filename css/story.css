@@ -57,7 +57,8 @@ article p {
 article hr {
   border: none;
   border-bottom: thin dotted #7e9ebd;
-  width: 60%;
+  margin-left: 5em;
+  width: 20em;
 }
 article pre.poetry {
   font-family: "Poly", serif;
