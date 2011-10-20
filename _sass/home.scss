@@ -40,11 +40,14 @@ section {
   }
 
   a:link, a:visited {
+    border-bottom: thin solid $foreground;
     color: $foreground;
-    text-decoration: underline;
+    text-decoration: none;
 
     &:hover {
-      text-shadow: $background 0 0 1px, $accent 0 0 20px;
+      border-bottom: thin solid darken($accent, 30%);
+      color: darken($accent, 30%);
+      text-shadow: $background 0 0 8px, $accent 0 0 30px;
       //text-shadow: #000000 0 0 2px, #ffffff 0 0 1px;
       //text-shadow: #000000 0 0 40px;
     }

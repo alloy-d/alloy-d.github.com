@@ -59,9 +59,12 @@ section {
   margin: 0 0.2em;
 }
 #links > ul a:link, #links > ul a:visited {
+  border-bottom: thin solid #1a100c;
   color: #1a100c;
-  text-decoration: underline;
+  text-decoration: none;
 }
 #links > ul a:link:hover, #links > ul a:visited:hover {
-  text-shadow: #fdfeff 0 0 1px, #7e9ebd 0 0 20px;
+  border-bottom: thin solid #37516b;
+  color: #37516b;
+  text-shadow: #fdfeff 0 0 8px, #7e9ebd 0 0 30px;
 }
