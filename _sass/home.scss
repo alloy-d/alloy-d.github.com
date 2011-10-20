@@ -1,6 +1,10 @@
 @import "basic";
 
+$foreground: black;
+$background: white;
+
 #equation {
+  color: black;
   font-family: "Sorts Mill Goudy";
   margin: 4em auto 0 auto;
   width: 46em;
@@ -21,6 +25,7 @@
         line-height: 0.8;
         position: relative;
         top: 0.020em;
+        z-index: -1;
       }
       #upper_bound, #lower_bound {
         font-size: 2em;
@@ -50,14 +55,26 @@
 
 #links > ul {
   font-family: $bodyFont;
+  font-size: 1.2em;
   list-style-type: none;
-  margin-left: 0;
-  padding-left: 0;
+  margin-left: 12em;
+  padding-left: 1.4em;
+  position: relative;
   text-align: center;
+  top: -5.5em;
+
+  &:before {
+    content: "=";
+  }
 
   li {
     display: inline-block;
-    margin: 0 0.2em;
+  }
+
+  li + li:before {
+    content: "+";
+    display: inline-block;
+    margin: 0 0.55em 0 0.3em;
   }
 
   a:link, a:visited {
