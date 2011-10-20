@@ -1,27 +1,48 @@
 @import "basic";
 
-body {
-  margin: 2em;
-}
+#equation {
+  font-family: "Sorts Mill Goudy";
+  margin: 4em auto 0 auto;
+  width: 46em;
 
-header {
-  border-bottom: 0.3em solid $foreground;
-  margin: 0 auto;
-  width: 24em;
+  #summation {
+    display: table-row;
+    vertical-align: middle;
 
-  h1#name {
-    color: $foreground;
-    font-family: $headerFont;
-    font-size: 2.6em;
-    font-weight: 400;
-    text-align: center;
-    margin-bottom: 0.2em;
+    #operator {
+      float: left;
+      span {
+        display: block;
+        text-align: center;
+      }
+      #sigma {
+        font-family: "Cardo", serif;
+        font-size: 22em;
+        line-height: 0.8;
+        position: relative;
+        top: 0.020em;
+      }
+      #upper_bound, #lower_bound {
+        font-size: 2em;
+        line-height: 1;
+      }
+    }
+
+    #value {
+      display: table-cell;
+      font-size: 7em;
+      text-align: center;
+      vertical-align: middle;
+
+      sub {
+        font-size: 0.5em;
+        height: 0;
+        line-height: 0;
+      }
+    }
   }
 }
 
-section {
-  font-size: 1.2em;
-}
 #about > pre {
   font-family: $bodyFont;
   text-align: center;
