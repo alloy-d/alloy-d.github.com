@@ -9,3 +9,5 @@
         Language: English
         Doctype: HTML5
         Editor: VIM
+        Hosting: GitHub
+        Other tools: Jekyll, Sass, redo
