@@ -8,8 +8,8 @@ window.Automaton = (window.Automaton || {});
     var vOffset = 0, hOffset = 0;
     if (neighborDirection.indexOf("N") >= 0) { vOffset = -1; }
     if (neighborDirection.indexOf("S") >= 0) { vOffset =  1; }
-    if (neighborDirection.indexOf("E") >= 0) { hOffset = -1; }
-    if (neighborDirection.indexOf("W") >= 0) { hOffset =  1; }
+    if (neighborDirection.indexOf("E") >= 0) { hOffset =  1; }
+    if (neighborDirection.indexOf("W") >= 0) { hOffset = -1; }
     return function address(v, h, grid) {
       return grid[v+vOffset][h+hOffset];
     };
