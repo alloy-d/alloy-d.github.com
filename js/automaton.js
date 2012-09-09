@@ -11,7 +11,9 @@ window.Automaton = (window.Automaton || {});
     if (neighborDirection.indexOf("E") >= 0) { hOffset =  1; }
     if (neighborDirection.indexOf("W") >= 0) { hOffset = -1; }
     return function address(v, h, grid) {
-      return grid[v+vOffset][h+hOffset];
+      v += vOffset; h += hOffset;
+      if (v < 0 || h < 0 || v >= grid.length || h >= grid[0].length) { return 0; }
+      return grid[v][h];
     };
   };
 
