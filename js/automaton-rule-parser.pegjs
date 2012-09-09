@@ -9,7 +9,11 @@ rule
       }
     }
   }
-  / disjunction
+  / newVal:state {
+    return function(v, h, grid) {
+      return newVal;
+    }
+  }
 
 disjunction
   = left:conjunction sep* "||" sep* right:disjunction {

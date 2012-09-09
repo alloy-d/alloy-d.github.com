@@ -167,7 +167,18 @@ Automaton.RuleParser = (function(){
           pos = pos0;
         }
         if (result0 === null) {
-          result0 = parse_disjunction();
+          pos0 = pos;
+          result0 = parse_state();
+          if (result0 !== null) {
+            result0 = (function(offset, newVal) {
+              return function(v, h, grid) {
+                return newVal;
+              }
+            })(pos0, result0);
+          }
+          if (result0 === null) {
+            pos = pos0;
+          }
         }
         return result0;
       }
