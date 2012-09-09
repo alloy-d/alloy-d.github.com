@@ -2,7 +2,7 @@ start
   = disjunction
 
 disjunction
-  = left:conjunction "||" right:disjunction {
+  = left:conjunction sep* "||" sep* right:disjunction {
     return function (v, h, grid) {
       return left(v,h,grid) || right(v,h,grid);
     }
@@ -10,7 +10,7 @@ disjunction
   / conjunction
 
 conjunction
-  = left:equality "&&" right:conjunction {
+  = left:equality sep* "&&" sep* right:conjunction {
     return function (v, h, grid) {
       return left(v,h,grid) && right(v,h,grid);
     }
@@ -18,7 +18,7 @@ conjunction
   / equality
 
 equality
-  = neighbor:neighbor "==" state:state {
+  = neighbor:neighbor sep* "==" sep* state:state {
     return function(v, h, grid) {
       return Automaton[neighbor](v,h,grid) === state;
     }
@@ -39,3 +39,5 @@ neighbor
 
 state
   = digits:[0-9]+ { return parseInt(digits.join(""), 10) }
+
+sep = [' '\t\r\n]

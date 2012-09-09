@@ -41,7 +41,8 @@ Automaton.RuleParser = (function(){
         "conjunction": parse_conjunction,
         "equality": parse_equality,
         "neighbor": parse_neighbor,
-        "state": parse_state
+        "state": parse_state,
+        "sep": parse_sep
       };
       
       if (startRule !== undefined) {
@@ -98,26 +99,48 @@ Automaton.RuleParser = (function(){
       }
       
       function parse_disjunction() {
-        var result0, result1, result2;
+        var result0, result1, result2, result3, result4;
         var pos0, pos1;
         
         pos0 = pos;
         pos1 = pos;
         result0 = parse_conjunction();
         if (result0 !== null) {
-          if (input.substr(pos, 2) === "||") {
-            result1 = "||";
-            pos += 2;
-          } else {
-            result1 = null;
-            if (reportFailures === 0) {
-              matchFailed("\"||\"");
-            }
+          result1 = [];
+          result2 = parse_sep();
+          while (result2 !== null) {
+            result1.push(result2);
+            result2 = parse_sep();
           }
           if (result1 !== null) {
-            result2 = parse_disjunction();
+            if (input.substr(pos, 2) === "||") {
+              result2 = "||";
+              pos += 2;
+            } else {
+              result2 = null;
+              if (reportFailures === 0) {
+                matchFailed("\"||\"");
+              }
+            }
             if (result2 !== null) {
-              result0 = [result0, result1, result2];
+              result3 = [];
+              result4 = parse_sep();
+              while (result4 !== null) {
+                result3.push(result4);
+                result4 = parse_sep();
+              }
+              if (result3 !== null) {
+                result4 = parse_disjunction();
+                if (result4 !== null) {
+                  result0 = [result0, result1, result2, result3, result4];
+                } else {
+                  result0 = null;
+                  pos = pos1;
+                }
+              } else {
+                result0 = null;
+                pos = pos1;
+              }
             } else {
               result0 = null;
               pos = pos1;
@@ -135,7 +158,7 @@ Automaton.RuleParser = (function(){
             return function (v, h, grid) {
               return left(v,h,grid) || right(v,h,grid);
             }
-          })(pos0, result0[0], result0[2]);
+          })(pos0, result0[0], result0[4]);
         }
         if (result0 === null) {
           pos = pos0;
@@ -147,26 +170,48 @@ Automaton.RuleParser = (function(){
       }
       
       function parse_conjunction() {
-        var result0, result1, result2;
+        var result0, result1, result2, result3, result4;
         var pos0, pos1;
         
         pos0 = pos;
         pos1 = pos;
         result0 = parse_equality();
         if (result0 !== null) {
-          if (input.substr(pos, 2) === "&&") {
-            result1 = "&&";
-            pos += 2;
-          } else {
-            result1 = null;
-            if (reportFailures === 0) {
-              matchFailed("\"&&\"");
-            }
+          result1 = [];
+          result2 = parse_sep();
+          while (result2 !== null) {
+            result1.push(result2);
+            result2 = parse_sep();
           }
           if (result1 !== null) {
-            result2 = parse_conjunction();
+            if (input.substr(pos, 2) === "&&") {
+              result2 = "&&";
+              pos += 2;
+            } else {
+              result2 = null;
+              if (reportFailures === 0) {
+                matchFailed("\"&&\"");
+              }
+            }
             if (result2 !== null) {
-              result0 = [result0, result1, result2];
+              result3 = [];
+              result4 = parse_sep();
+              while (result4 !== null) {
+                result3.push(result4);
+                result4 = parse_sep();
+              }
+              if (result3 !== null) {
+                result4 = parse_conjunction();
+                if (result4 !== null) {
+                  result0 = [result0, result1, result2, result3, result4];
+                } else {
+                  result0 = null;
+                  pos = pos1;
+                }
+              } else {
+                result0 = null;
+                pos = pos1;
+              }
             } else {
               result0 = null;
               pos = pos1;
@@ -184,7 +229,7 @@ Automaton.RuleParser = (function(){
             return function (v, h, grid) {
               return left(v,h,grid) && right(v,h,grid);
             }
-          })(pos0, result0[0], result0[2]);
+          })(pos0, result0[0], result0[4]);
         }
         if (result0 === null) {
           pos = pos0;
@@ -196,26 +241,48 @@ Automaton.RuleParser = (function(){
       }
       
       function parse_equality() {
-        var result0, result1, result2;
+        var result0, result1, result2, result3, result4;
         var pos0, pos1;
         
         pos0 = pos;
         pos1 = pos;
         result0 = parse_neighbor();
         if (result0 !== null) {
-          if (input.substr(pos, 2) === "==") {
-            result1 = "==";
-            pos += 2;
-          } else {
-            result1 = null;
-            if (reportFailures === 0) {
-              matchFailed("\"==\"");
-            }
+          result1 = [];
+          result2 = parse_sep();
+          while (result2 !== null) {
+            result1.push(result2);
+            result2 = parse_sep();
           }
           if (result1 !== null) {
-            result2 = parse_state();
+            if (input.substr(pos, 2) === "==") {
+              result2 = "==";
+              pos += 2;
+            } else {
+              result2 = null;
+              if (reportFailures === 0) {
+                matchFailed("\"==\"");
+              }
+            }
             if (result2 !== null) {
-              result0 = [result0, result1, result2];
+              result3 = [];
+              result4 = parse_sep();
+              while (result4 !== null) {
+                result3.push(result4);
+                result4 = parse_sep();
+              }
+              if (result3 !== null) {
+                result4 = parse_state();
+                if (result4 !== null) {
+                  result0 = [result0, result1, result2, result3, result4];
+                } else {
+                  result0 = null;
+                  pos = pos1;
+                }
+              } else {
+                result0 = null;
+                pos = pos1;
+              }
             } else {
               result0 = null;
               pos = pos1;
@@ -233,7 +300,7 @@ Automaton.RuleParser = (function(){
             return function(v, h, grid) {
               return Automaton[neighbor](v,h,grid) === state;
             }
-          })(pos0, result0[0], result0[2]);
+          })(pos0, result0[0], result0[4]);
         }
         if (result0 === null) {
           pos = pos0;
@@ -397,6 +464,21 @@ Automaton.RuleParser = (function(){
         }
         if (result0 === null) {
           pos = pos0;
+        }
+        return result0;
+      }
+      
+      function parse_sep() {
+        var result0;
+        
+        if (/^[' '\t\r\n]/.test(input.charAt(pos))) {
+          result0 = input.charAt(pos);
+          pos++;
+        } else {
+          result0 = null;
+          if (reportFailures === 0) {
+            matchFailed("[' '\\t\\r\\n]");
+          }
         }
         return result0;
       }
