@@ -22,4 +22,24 @@ window.Automaton = (window.Automaton || {});
     Automaton[dir] = addresser(dir);
   });
   Automaton.self = function (v, h, grid) { return grid[v][h]; };
+
+  Automaton.update = function (grid, ruleSet) {
+    var height = grid.length;
+    var width = grid[0].length;
+    var v, h, rule, newVal;
+
+    var result = new Array(height);
+    for (v = 0; v < height; v += 1) { result[v] = new Array(width); }
+
+    for (v = 0; v < height; v += 1) {
+      for (h = 0; h < width; h += 1) {
+        for (rule = 0; rule < ruleSet.length; rule += 1) {
+          if (newVal = ruleSet[rule](v, h, grid)) {
+            result[v][h] = newVal; break;
+          }
+        }
+      }
+    }
+    return result;
+  }
 }.call(window.Automaton));
