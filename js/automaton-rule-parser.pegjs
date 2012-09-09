@@ -1,5 +1,15 @@
 start
-  = disjunction
+  = rule
+
+rule
+  = newVal:state sep* ":" sep* condition:disjunction {
+    return function(v, h, grid) {
+      if (condition(v,h,grid)) {
+        return newVal;
+      }
+    }
+  }
+  / disjunction
 
 disjunction
   = left:conjunction sep* "||" sep* right:disjunction {

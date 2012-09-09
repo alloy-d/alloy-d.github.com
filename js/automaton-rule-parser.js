@@ -37,6 +37,7 @@ Automaton.RuleParser = (function(){
      */
     parse: function(input, startRule) {
       var parseFunctions = {
+        "rule": parse_rule,
         "disjunction": parse_disjunction,
         "conjunction": parse_conjunction,
         "equality": parse_equality,
@@ -50,7 +51,7 @@ Automaton.RuleParser = (function(){
           throw new Error("Invalid rule name: " + quote(startRule) + ".");
         }
       } else {
-        startRule = "disjunction";
+        startRule = "rule";
       }
       
       var pos = 0;
@@ -96,6 +97,79 @@ Automaton.RuleParser = (function(){
         }
         
         rightmostFailuresExpected.push(failure);
+      }
+      
+      function parse_rule() {
+        var result0, result1, result2, result3, result4;
+        var pos0, pos1;
+        
+        pos0 = pos;
+        pos1 = pos;
+        result0 = parse_state();
+        if (result0 !== null) {
+          result1 = [];
+          result2 = parse_sep();
+          while (result2 !== null) {
+            result1.push(result2);
+            result2 = parse_sep();
+          }
+          if (result1 !== null) {
+            if (input.charCodeAt(pos) === 58) {
+              result2 = ":";
+              pos++;
+            } else {
+              result2 = null;
+              if (reportFailures === 0) {
+                matchFailed("\":\"");
+              }
+            }
+            if (result2 !== null) {
+              result3 = [];
+              result4 = parse_sep();
+              while (result4 !== null) {
+                result3.push(result4);
+                result4 = parse_sep();
+              }
+              if (result3 !== null) {
+                result4 = parse_disjunction();
+                if (result4 !== null) {
+                  result0 = [result0, result1, result2, result3, result4];
+                } else {
+                  result0 = null;
+                  pos = pos1;
+                }
+              } else {
+                result0 = null;
+                pos = pos1;
+              }
+            } else {
+              result0 = null;
+              pos = pos1;
+            }
+          } else {
+            result0 = null;
+            pos = pos1;
+          }
+        } else {
+          result0 = null;
+          pos = pos1;
+        }
+        if (result0 !== null) {
+          result0 = (function(offset, newVal, condition) {
+            return function(v, h, grid) {
+              if (condition(v,h,grid)) {
+                return newVal;
+              }
+            }
+          })(pos0, result0[0], result0[4]);
+        }
+        if (result0 === null) {
+          pos = pos0;
+        }
+        if (result0 === null) {
+          result0 = parse_disjunction();
+        }
+        return result0;
       }
       
       function parse_disjunction() {
