@@ -42,7 +42,9 @@ Automaton.RuleParser = (function(){
         "conjunction": parse_conjunction,
         "equality": parse_equality,
         "neighbor": parse_neighbor,
-        "state": parse_state,
+        "counter": parse_counter,
+        "name": parse_name,
+        "num": parse_num,
         "sep": parse_sep
       };
       
@@ -105,7 +107,7 @@ Automaton.RuleParser = (function(){
         
         pos0 = pos;
         pos1 = pos;
-        result0 = parse_state();
+        result0 = parse_num();
         if (result0 !== null) {
           result1 = [];
           result2 = parse_sep();
@@ -168,7 +170,7 @@ Automaton.RuleParser = (function(){
         }
         if (result0 === null) {
           pos0 = pos;
-          result0 = parse_state();
+          result0 = parse_num();
           if (result0 !== null) {
             result0 = (function(offset, newVal) {
               return function(v, h, grid) {
@@ -357,7 +359,7 @@ Automaton.RuleParser = (function(){
                 result4 = parse_sep();
               }
               if (result3 !== null) {
-                result4 = parse_state();
+                result4 = parse_num();
                 if (result4 !== null) {
                   result0 = [result0, result1, result2, result3, result4];
                 } else {
@@ -392,29 +394,92 @@ Automaton.RuleParser = (function(){
         }
         if (result0 === null) {
           pos0 = pos;
-          result0 = parse_neighbor();
+          pos1 = pos;
+          result0 = parse_counter();
           if (result0 !== null) {
-            result0 = (function(offset, neighbor) {
-              return function (v, h, grid) {
-                return Automaton[neighbor](v,h,grid) !== 0;
+            result1 = [];
+            result2 = parse_sep();
+            while (result2 !== null) {
+              result1.push(result2);
+              result2 = parse_sep();
+            }
+            if (result1 !== null) {
+              if (input.substr(pos, 2) === "==") {
+                result2 = "==";
+                pos += 2;
+              } else {
+                result2 = null;
+                if (reportFailures === 0) {
+                  matchFailed("\"==\"");
+                }
               }
-            })(pos0, result0);
+              if (result2 !== null) {
+                result3 = [];
+                result4 = parse_sep();
+                while (result4 !== null) {
+                  result3.push(result4);
+                  result4 = parse_sep();
+                }
+                if (result3 !== null) {
+                  result4 = parse_num();
+                  if (result4 !== null) {
+                    result0 = [result0, result1, result2, result3, result4];
+                  } else {
+                    result0 = null;
+                    pos = pos1;
+                  }
+                } else {
+                  result0 = null;
+                  pos = pos1;
+                }
+              } else {
+                result0 = null;
+                pos = pos1;
+              }
+            } else {
+              result0 = null;
+              pos = pos1;
+            }
+          } else {
+            result0 = null;
+            pos = pos1;
+          }
+          if (result0 !== null) {
+            result0 = (function(offset, counter, num) {
+              return function (v, h, grid) {
+                return counter(v,h,grid) === num;
+              }
+            })(pos0, result0[0], result0[4]);
           }
           if (result0 === null) {
             pos = pos0;
           }
           if (result0 === null) {
             pos0 = pos;
-            result0 = parse_state();
+            result0 = parse_neighbor();
             if (result0 !== null) {
-              result0 = (function(offset, state) {
+              result0 = (function(offset, neighbor) {
                 return function (v, h, grid) {
-                  return Automaton.self(v,h,grid) === state;
+                  return Automaton[neighbor](v,h,grid) !== 0;
                 }
               })(pos0, result0);
             }
             if (result0 === null) {
               pos = pos0;
+            }
+            if (result0 === null) {
+              pos0 = pos;
+              result0 = parse_num();
+              if (result0 !== null) {
+                result0 = (function(offset, state) {
+                  return function (v, h, grid) {
+                    return Automaton.self(v,h,grid) === state;
+                  }
+                })(pos0, result0);
+              }
+              if (result0 === null) {
+                pos = pos0;
+              }
             }
           }
         }
@@ -513,7 +578,93 @@ Automaton.RuleParser = (function(){
         return result0;
       }
       
-      function parse_state() {
+      function parse_counter() {
+        var result0, result1, result2, result3;
+        var pos0, pos1;
+        
+        pos0 = pos;
+        pos1 = pos;
+        result0 = parse_name();
+        if (result0 !== null) {
+          if (input.charCodeAt(pos) === 40) {
+            result1 = "(";
+            pos++;
+          } else {
+            result1 = null;
+            if (reportFailures === 0) {
+              matchFailed("\"(\"");
+            }
+          }
+          if (result1 !== null) {
+            result2 = parse_num();
+            if (result2 !== null) {
+              if (input.charCodeAt(pos) === 41) {
+                result3 = ")";
+                pos++;
+              } else {
+                result3 = null;
+                if (reportFailures === 0) {
+                  matchFailed("\")\"");
+                }
+              }
+              if (result3 !== null) {
+                result0 = [result0, result1, result2, result3];
+              } else {
+                result0 = null;
+                pos = pos1;
+              }
+            } else {
+              result0 = null;
+              pos = pos1;
+            }
+          } else {
+            result0 = null;
+            pos = pos1;
+          }
+        } else {
+          result0 = null;
+          pos = pos1;
+        }
+        if (result0 !== null) {
+          result0 = (function(offset, name, state) {
+            return function (v, h, grid) {
+              return Automaton.counters[name](state)(v,h,grid);
+            }
+          })(pos0, result0[0], result0[2]);
+        }
+        if (result0 === null) {
+          pos = pos0;
+        }
+        return result0;
+      }
+      
+      function parse_name() {
+        var result0;
+        
+        if (input.substr(pos, 5) === "moore") {
+          result0 = "moore";
+          pos += 5;
+        } else {
+          result0 = null;
+          if (reportFailures === 0) {
+            matchFailed("\"moore\"");
+          }
+        }
+        if (result0 === null) {
+          if (input.substr(pos, 10) === "vonNeumann") {
+            result0 = "vonNeumann";
+            pos += 10;
+          } else {
+            result0 = null;
+            if (reportFailures === 0) {
+              matchFailed("\"vonNeumann\"");
+            }
+          }
+        }
+        return result0;
+      }
+      
+      function parse_num() {
         var result0, result1;
         var pos0;
         

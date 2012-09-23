@@ -27,6 +27,27 @@ if (typeof window !== "undefined") {
   });
   Automaton.self = function (v, h, grid) { return grid[v][h]; };
 
+  Automaton.vonNeumannAddresses = ["N", "S", "E", "W"];
+  Automaton.mooreAddresses = Automaton.vonNeumannAddresses.concat("NE", "NW", "SE", "SW");
+
+  var counter = function counter(addresses) {
+    return function counterForState(state) {
+      return function (v, h, grid) {
+        var count = 0;
+        for (var i in addresses) {
+          if (Automaton[addresses[i]](v,h,grid) === state) {
+            count += 1;
+          }
+        }
+        return count;
+      };
+    };
+  };
+  Automaton.counters = {
+    "moore": counter(Automaton.mooreAddresses),
+    "vonNeumann": counter(Automaton.vonNeumannAddresses)
+  };
+
   Automaton.update = function (grid, ruleSet) {
     var height = grid.length;
     var width = grid[0].length;
