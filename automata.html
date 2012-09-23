@@ -44,15 +44,6 @@
         "1: 0",
         "0: 1"
       ]
-      window.parsedRules = _.map(rules, function (el) {
-        return Automaton.RuleParser.parse(el);
-      });
-
-      function updateAndRedraw() {
-        grid = Automaton.update(grid, parsedRules);
-        artist.draw(grid)
-      }
-      // window.setInterval(updateAndRedraw, 100);
 
       function debugGrid(grid) {
         var height = grid.length;
@@ -64,6 +55,22 @@
         }
         console.groupEnd();
       }
+
+      var updateWorker = new Worker("js/automaton-update-worker.js");
+      updateWorker.onmessage = function (event) {
+        if (event.data.type === "new grid") {
+          grid = event.data.grid;
+          artist.draw(grid);
+          if (!window.STOP_THIS_MADNESS) {
+            updateWorker.postMessage({type: "updateGrid", grid: grid});
+          }
+        }
+      }
+      updateWorker.onerror = function (error) {
+        console.log(error);
+      }
+      updateWorker.postMessage({type: "updateRules", rules: rules})
+      updateWorker.postMessage({type: "updateGrid", grid: grid});
     </script>
   </body>
 </html>
