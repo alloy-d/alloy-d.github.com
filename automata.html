@@ -30,9 +30,15 @@
       for (v = 0; v < height; v += 1) {
         grid[v] = new Array(width);
         for (h = 0; h < width; h += 1) {
-          grid[v][h] = Math.floor(Math.random() * 1.5);
+          grid[v][h] = Math.floor(Math.random() * 0);
         }
       }
+      window.grid[50][80] = 1;
+      window.grid[50][81] = 1;
+      window.grid[50][82] = 1;
+      window.grid[50][83] = 1;
+      window.grid[50][84] = 1;
+
       function makeNewArtist() {
         window.artist = new Automaton.Artist("automaton", width, height);
         artist.draw(grid);
