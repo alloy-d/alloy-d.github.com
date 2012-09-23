@@ -1,4 +1,8 @@
-window.Automaton = (window.Automaton || {});
+if (typeof window !== "undefined") {
+  window.Automaton = (window.Automaton || {});
+} else {
+  Automaton = {};
+}
 
 (function bindAutomaton() {
   "use strict";
@@ -43,4 +47,4 @@ window.Automaton = (window.Automaton || {});
     }
     return result;
   }
-}.call(window.Automaton));
+}.call(Automaton));
