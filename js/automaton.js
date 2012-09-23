@@ -34,7 +34,8 @@ window.Automaton = (window.Automaton || {});
     for (v = 0; v < height; v += 1) {
       for (h = 0; h < width; h += 1) {
         for (rule = 0; rule < ruleSet.length; rule += 1) {
-          if (newVal = ruleSet[rule](v, h, grid)) {
+          newVal = ruleSet[rule](v, h, grid)
+          if (typeof newVal !== "undefined") {
             result[v][h] = newVal; break;
           }
         }
