@@ -63,11 +63,12 @@
       }
 
       var updateWorker = new Worker("js/automaton-update-worker.js");
+      window.TIME_IS_FROZEN = false;
       updateWorker.onmessage = function (event) {
         if (event.data.type === "new grid") {
           grid = event.data.grid;
           artist.draw(grid);
-          if (!window.STOP_THIS_MADNESS) {
+          if (!window.TIME_IS_FROZEN) {
             updateWorker.postMessage({type: "updateGrid", grid: grid});
           }
         }
