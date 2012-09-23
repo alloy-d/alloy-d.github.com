@@ -1,0 +1,69 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>automaton</title>
+
+    <style>
+      body {
+        margin: 0;
+        overflow: hidden;
+        padding: 0;
+      }
+      #automaton {
+        height: 100%;
+        width: 100%;
+      }
+    </style>
+  </head>
+
+  <body>
+    <canvas id="automaton"/>
+    <script src="js/underscore.js"></script>
+    <script src="js/automaton.js"></script>
+    <script src="js/automaton-rule-parser.js"></script>
+    <script src="js/automaton-artist.js"></script>
+    <script type="text/javascript">
+      var width = 160, height = 100;
+      var v, h;
+      window.grid = new Array(height);
+      for (v = 0; v < height; v += 1) {
+        grid[v] = new Array(width);
+        for (h = 0; h < width; h += 1) {
+          grid[v][h] = Math.floor(Math.random() * 1.5);
+        }
+      }
+      function makeNewArtist() {
+        window.artist = new Automaton.Artist("automaton", width, height);
+        artist.draw(grid);
+      }
+      makeNewArtist();
+      window.onresize = makeNewArtist();
+
+      window.rules = [
+        "1: 0",
+        "0: 1"
+      ]
+      window.parsedRules = _.map(rules, function (el) {
+        return Automaton.RuleParser.parse(el);
+      });
+
+      function updateAndRedraw() {
+        grid = Automaton.update(grid, parsedRules);
+        artist.draw(grid)
+      }
+      // window.setInterval(updateAndRedraw, 100);
+
+      function debugGrid(grid) {
+        var height = grid.length;
+        var width = grid[0].length;
+        var v, h;
+        console.group("grid");
+        for (v = 0; v < height; v += 1) {
+          console.log(grid[v].join("\t"));
+        }
+        console.groupEnd();
+      }
+    </script>
+  </body>
+</html>
