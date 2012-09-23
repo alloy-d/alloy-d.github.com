@@ -11,7 +11,7 @@ Automaton.Artist = function (canvasID, gridWidth, gridHeight, colors, settings) 
     this.colors = colors;
   } else {
     this.colors = [
-      "black",
+      null,
       "#2233aa"
     ];
   }
@@ -36,10 +36,20 @@ Automaton.Artist = function (canvasID, gridWidth, gridHeight, colors, settings) 
     ctx.fillStyle = this.settings.background;
     ctx.fillRect(0, 0, this.gridWidth * sz, this.gridHeight * sz);
 
-    for (v = 0; v < this.gridHeight; v += 1) {
-      for (h = 0; h < this.gridWidth; h += 1) {
-        ctx.fillStyle = this.colors[grid[v][h]];
-        ctx.fillRect(h * sz, v * sz, sz, sz);
+    if (this.colors.length === 2 && this.colors[0] === null) { // optimized case
+      ctx.fillStyle = this.colors[1];
+      for (v = 0; v < this.gridHeight; v += 1) {
+        for (h = 0; h < this.gridWidth; h += 1) {
+          if (grid[v][h] === 0) { continue }
+          ctx.fillRect(h * sz, v * sz, sz, sz);
+        }
+      }
+    } else { // Drawin' every color...
+      for (v = 0; v < this.gridHeight; v += 1) {
+        for (h = 0; h < this.gridWidth; h += 1) {
+          ctx.fillStyle = this.colors[grid[v][h]];
+          ctx.fillRect(h * sz, v * sz, sz, sz);
+        }
       }
     }
 
