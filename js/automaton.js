@@ -23,7 +23,7 @@ if (typeof window !== "undefined") {
 
   Automaton.addresses = ["N", "S", "E", "W", "NE", "NW", "SE", "SW"];
   Automaton.addresses.forEach(function (dir) {
-    Automaton[dir] = addresser(dir);
+    Automaton[dir] = Automaton.addresser(dir);
   });
   Automaton.self = function (v, h, grid) { return grid[v][h]; };
 
