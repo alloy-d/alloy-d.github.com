@@ -24,8 +24,17 @@
     <script src="js/automaton-rule-parser.js"></script>
     <script src="js/automaton-artist.js"></script>
     <script type="text/javascript">
-      var width = 160, height = 100;
+      window.maxCellsWide = 40;
+      window.maxCellsHigh = 40;
+      var winh = window.innerHeight;
+      var winw = window.innerWidth;
+
+      var cellSize = Math.ceil(_.max([window.innerHeight / window.maxCellsHigh, window.innerWidth / window.maxCellsWide]));
+      var width = Math.ceil(winw / cellSize), height = Math.ceil(winh / cellSize);
       var v, h;
+      var ch = parseInt(width / 2);
+      var cv = parseInt(height / 2);
+
       window.grid = new Array(height);
       for (v = 0; v < height; v += 1) {
         grid[v] = new Array(width);
@@ -33,11 +42,11 @@
           grid[v][h] = Math.floor(Math.random() * 0);
         }
       }
-      window.grid[50][80] = 1;
-      window.grid[50][81] = 1;
-      window.grid[50][82] = 1;
-      window.grid[50][83] = 1;
-      window.grid[50][84] = 1;
+      window.grid[cv][ch-2] = 1;
+      window.grid[cv][ch-1] = 1;
+      window.grid[cv][ch] = 1;
+      window.grid[cv][ch+1] = 1;
+      window.grid[cv][ch+2] = 1;
 
       function makeNewArtist() {
         window.artist = new Automaton.Artist("automaton", width, height);
