@@ -73,7 +73,7 @@
 
       var updateWorker = new Worker("js/automaton-update-worker.js");
       window.TIME_IS_FROZEN = false;
-      updateWorker.onmessage = function (event) {
+      updateWorker.onmessage = _.throttle(function (event) {
         if (event.data.type === "new grid") {
           grid = event.data.grid;
           artist.draw(grid);
@@ -81,7 +81,7 @@
             updateWorker.postMessage({type: "updateGrid", grid: grid});
           }
         }
-      }
+      }, 50);
       updateWorker.onerror = function (error) {
         console.log(error);
       }
