@@ -31,7 +31,7 @@ Automaton.Artist = function (canvasID, gridWidth, gridHeight, colors, settings) 
   this.draw = function drawGrid(grid) {
     var sz = this.settings.cellSize;
     var ctx = this.context;
-    var v, h;
+    var v, h, hs;
 
     ctx.fillStyle = this.settings.background;
     ctx.fillRect(0, 0, this.gridWidth * sz, this.gridHeight * sz);
@@ -41,7 +41,12 @@ Automaton.Artist = function (canvasID, gridWidth, gridHeight, colors, settings) 
       for (v = 0; v < this.gridHeight; v += 1) {
         for (h = 0; h < this.gridWidth; h += 1) {
           if (grid[v][h] === 0) { continue }
-          ctx.fillRect(h * sz, v * sz, sz, sz);
+          hs = 1;
+          while (h + hs < this.gridWidth && grid[v][h+hs] === 1) {
+            hs += 1;
+          }
+          ctx.fillRect(h * sz, v * sz, sz * hs, sz);
+          h += hs - 1;
         }
       }
     } else { // Drawin' every color...
