@@ -28,6 +28,33 @@ Automaton.Artist = function (canvasID, gridWidth, gridHeight, settings, colors) 
 };
 
 (function bindAutomatonArtistFunctions() {
+  this.drawGridLines = function drawGridLines() {
+    var ctx, sz = this.settings.cellSize;
+    if (typeof this.gridLines === "undefined") {
+      this.gridLines = document.createElement("canvas");
+      this.gridLines.width = this.gridWidth * sz;
+      this.gridLines.height = this.gridHeight * sz;
+
+      ctx = this.gridLines.getContext("2d");
+
+      ctx.strokeStyle = this.settings.gridColor;
+      ctx.lineWidth = this.settings.gridThickness;
+      ctx.beginPath();
+      for (v = 1; v < this.gridHeight; v += 1) {
+        ctx.moveTo(0, v * sz);
+        ctx.lineTo(this.canvas.width, v * sz);
+      }
+      for (h = 1; h < this.gridWidth; h += 1) {
+        ctx.moveTo(h * sz, 0);
+        ctx.lineTo(h * sz, this.canvas.height);
+      }
+      ctx.stroke();
+      ctx.closePath();
+    }
+
+    this.context.drawImage(this.gridLines, 0, 0);
+  }
+
   this.draw = function drawGrid(grid) {
     var sz = this.settings.cellSize;
     var ctx = this.context;
@@ -58,18 +85,6 @@ Automaton.Artist = function (canvasID, gridWidth, gridHeight, settings, colors) 
       }
     }
 
-    ctx.strokeStyle = this.settings.gridColor;
-    ctx.lineWidth = this.settings.gridThickness;
-    ctx.beginPath();
-    for (v = 1; v < this.gridHeight; v += 1) {
-      ctx.moveTo(0, v * sz);
-      ctx.lineTo(this.canvas.width, v * sz);
-    }
-    for (h = 1; h < this.gridWidth; h += 1) {
-      ctx.moveTo(h * sz, 0);
-      ctx.lineTo(h * sz, this.canvas.height);
-    }
-    ctx.stroke();
-    ctx.closePath();
+    this.drawGridLines();
   }
 }.call(Automaton.Artist.prototype));
