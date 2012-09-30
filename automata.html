@@ -43,6 +43,9 @@
           grid[v][h] = Math.floor(Math.random() * 0);
         }
       }
+
+      cv = height - 5;
+      ch = width - 10;
       window.grid[cv][ch-2] = 1;
       window.grid[cv][ch-1] = 1;
       window.grid[cv][ch] = 1;
@@ -50,7 +53,7 @@
       window.grid[cv][ch+2] = 1;
 
       function makeNewArtist() {
-        window.artist = new Automaton.Artist("automaton", width, height);
+        window.artist = new Automaton.Artist("automaton", width, height, {cellSize: cellSize});
         artist.draw(grid);
       }
       makeNewArtist();
