@@ -1,6 +1,6 @@
 Automaton.Artist = (Automaton.Artist || {});
 
-Automaton.Artist = function (canvasID, gridWidth, gridHeight, colors, settings) {
+Automaton.Artist = function (canvasID, gridWidth, gridHeight, settings, colors) {
   this.settings = {
     background: "#000000",
     gridColor: "#000",
