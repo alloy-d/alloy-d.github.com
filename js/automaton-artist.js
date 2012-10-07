@@ -12,7 +12,7 @@ Automaton.Artist = function (canvasID, gridWidth, gridHeight, settings, colors) 
   } else {
     this.colors = [
       null,
-      "#2233aa"
+      "#000856"
     ];
   }
   if (typeof settings !== "undefined") {
