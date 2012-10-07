@@ -3,37 +3,51 @@
   <head>
     <title>Adam Lloyd</title>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="/css/home.css" />
-    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Cardo" />
+    <link href='http://fonts.googleapis.com/css?family=Averia+Serif+Libre:300|Fanwood+Text:400italic|Actor' rel='stylesheet' type='text/css'>
     <!--[if lt IE 9]>
     <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
+    <style>
+      body {
+        background-color: black;
+        margin: 0;
+        overflow: hidden;
+        padding: 0;
+        text-rendering: optimizeLegibility;
+      }
+      #automaton {
+        height: 100%;
+        width: 100%;
+      }
+
+      #name {
+        color: #eeeeff;
+        left: 6.5%;
+        position: absolute;
+        z-index: 1990;
+      }
+      #name h1 {
+        font: 300 5em "Averia Serif Libre";
+        text-shadow: black 0 0 70px, black 0 0 74px, black 0 0 78px, black 0 0 82px, black 0 0 86px;
+      }
+      #name #tagline {
+        font: 400 italic 1.8em "Fanwood Text";
+        left: 10ex;
+        position: relative;
+        top: -3em;
+      }
+
+      #links {
+        display: none;
+      }
+    </style>
   </head>
   <body>
-    <div id="equation">
-      <div id="summation">
-        <div id="operator">
-          <span id="upper_bound">now</span>
-          <span id="sigma">&Sigma;</span>
-          <span id="lower_bound"><i>t</i> = March 1990</span>
-        </div>
-        <span id="value">Life<sub>Adam Lloyd</sub></span>
-      </div>
-    </div>
-
-    <!--
-    <section id="about">
-      <pre>
-I write poetry and prose
-for humans and machines.
-
-Computer scientist by training,
-Japanese learner by interest,
-coffee drinker by taste,
-juggler by hobby.</pre>
+    <section id="name">
+      <h1>Adam Lloyd</h1>
+      <p id="tagline">artistry in code</p>
     </section>
-    -->
-    
+
     <section id="links">
       <ul>
         <li><a href="http://github.com/alloy-d/">code</a></li>
@@ -42,7 +56,14 @@ juggler by hobby.</pre>
         <li><a href="mailto:adam@alloy-d.net" class="monospace">adam@alloy-d.net</a></li>
       </ul>
     </section>
-    <div style="clear: both;"></div>
+
+    <canvas id="automaton"/>
+    <script src="js/underscore.js"></script>
+    <script src="js/automaton.js"></script>
+    <script src="js/automaton-rule-parser.js"></script>
+    <script src="js/automaton-artist.js"></script>
+    <script src="js/automaton-setup.js"></script>
+
     <script type="text/javascript">
       var _gauges = _gauges || [];
       (function() {
