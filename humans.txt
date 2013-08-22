@@ -1,7 +1,7 @@
 /* AUTHOR */
         Dude: Adam Lloyd
         Contact: adam [at] alloy-d.net
-        Twitter: @lloyda2
+        Twitter: @jugglewheels
         From: College Park, MD, USA
 
 /* SITE */
