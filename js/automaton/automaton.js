@@ -1,13 +1,13 @@
-if (typeof window !== "undefined") {
-  window.Automaton = (window.Automaton || {});
-} else {
-  Automaton = {};
-}
-
-(function bindAutomaton() {
+(function (root, maker) {
+  if (typeof(define) === "function" && define.amd) {
+    define(maker);
+  } else {
+    root.Automaton = maker();
+  }
+}(this, function () {
   "use strict";
 
-  var Automaton = this;
+  var Automaton = {};
   var addresser = function addresser(neighborDirection) {
     var vOffset = 0, hOffset = 0;
     if (neighborDirection.indexOf("N") >= 0) { vOffset = -1; }
@@ -67,5 +67,7 @@ if (typeof window !== "undefined") {
       }
     }
     return result;
-  }
-}.call(Automaton));
+  };
+
+  return Automaton;
+}));

@@ -1,17 +1,17 @@
-importScripts("underscore.js", "automaton.js", "automaton-rule-parser.js");
+importScripts("/js/automaton/automaton.js", "/js/automaton/rule-parser.js", "/js/underscore.js");
 
 self.rules = [];
 
 function updateRules(rules) {
   Rules = _.map(rules, function (rule) {
-    return Automaton.RuleParser.parse(rule);
+    return AutomatonRuleParser.parse(rule);
   });
 }
 
 self.handlers = {
   updateRules: function (data) {
     self.rules = _.map(data.rules, function (rule) {
-      return Automaton.RuleParser.parse(rule);
+      return AutomatonRuleParser.parse(rule);
     });
     self.postMessage({type: "ack rules"});
   },
