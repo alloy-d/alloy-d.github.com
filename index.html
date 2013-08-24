@@ -7,6 +7,12 @@
     <!--[if lt IE 9]>
     <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
+    <script>
+      window.curl = {
+        baseUrl: "js"
+      }
+    </script>
+    <script src="/js/curl.js"></script>
     <style>
       body {
         background-color: black;
@@ -58,24 +64,8 @@
     </section>
 
     <canvas id="automaton"/>
-    <script src="js/underscore.js"></script>
-    <script src="js/automaton.js"></script>
-    <script src="js/automaton-rule-parser.js"></script>
-    <script src="js/automaton-artist.js"></script>
-    <script src="js/automaton-setup.js"></script>
-
-    <script type="text/javascript">
-      var _gauges = _gauges || [];
-      (function() {
-       var t   = document.createElement('script');
-       t.type  = 'text/javascript';
-       t.async = true;
-       t.id    = 'gauges-tracker';
-       t.setAttribute('data-site-id', '4f5ea501613f5d1caa000068');
-       t.src = '//secure.gaug.es/track.js';
-       var s = document.getElementsByTagName('script')[0];
-       s.parentNode.insertBefore(t, s);
-       })();
+    <script>
+      curl("automaton-setup");
     </script>
   </body>
 </html>
