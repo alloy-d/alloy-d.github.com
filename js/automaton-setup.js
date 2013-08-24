@@ -1,4 +1,4 @@
-(function () {
+curl("underscore", function (_) {
   "use strict";
 
   window.maxCellsWide = 40;
@@ -28,51 +28,53 @@
   window.grid[cv][ch+1] = 1;
   window.grid[cv][ch+2] = 1;
 
-  function makeNewArtist() {
-    window.artist = new Automaton.Artist("automaton", width, height, {cellSize: cellSize});
-    artist.draw(grid);
-  }
-  makeNewArtist();
-  window.onresize = makeNewArtist();
-
-  // Conway's Game of Life
-  // window.rules = [
-  //   "1: moore(1) == 3",
-  //   "1: 1 && moore(1) == 2",
-  //   "0"
-  // ]
-
-  // Seeds:
-  window.rules = [
-    "1: 0 && moore(1) == 2",
-    "0"
-  ]
-
-  function debugGrid(grid) {
-    var height = grid.length;
-    var width = grid[0].length;
-    var v, h;
-    console.group("grid");
-    for (v = 0; v < height; v += 1) {
-      console.log(grid[v].join("\t"));
-    }
-    console.groupEnd();
-  }
-
-  var updateWorker = new Worker("js/automaton-update-worker.js");
-  window.TIME_IS_FROZEN = false;
-  updateWorker.onmessage = _.throttle(function (event) {
-    if (event.data.type === "new grid") {
-      grid = event.data.grid;
-      if (!window.TIME_IS_FROZEN) {
-        updateWorker.postMessage({type: "updateGrid", grid: grid});
-      }
+  curl(["automaton/artist"], function (Artist) {
+    function makeNewArtist() {
+      window.artist = new Artist("automaton", width, height, {cellSize: cellSize});
       artist.draw(grid);
     }
-  }, 50);
-  updateWorker.onerror = function (error) {
-    console.log(error);
-  }
-  updateWorker.postMessage({type: "updateRules", rules: rules})
-  updateWorker.postMessage({type: "updateGrid", grid: grid});
-}());
+    makeNewArtist();
+    window.onresize = makeNewArtist();
+
+    // Conway's Game of Life
+    // window.rules = [
+    //   "1: moore(1) == 3",
+    //   "1: 1 && moore(1) == 2",
+    //   "0"
+    // ]
+
+    // Seeds:
+    window.rules = [
+      "1: 0 && moore(1) == 2",
+      "0"
+    ]
+
+    function debugGrid(grid) {
+      var height = grid.length;
+      var width = grid[0].length;
+      var v, h;
+      console.group("grid");
+      for (v = 0; v < height; v += 1) {
+        console.log(grid[v].join("\t"));
+      }
+      console.groupEnd();
+    }
+
+    var updateWorker = new Worker("js/automaton/update-worker.js");
+    window.TIME_IS_FROZEN = false;
+    updateWorker.onmessage = _.throttle(function (event) {
+      if (event.data.type === "new grid") {
+        grid = event.data.grid;
+        if (!window.TIME_IS_FROZEN) {
+          updateWorker.postMessage({type: "updateGrid", grid: grid});
+        }
+        artist.draw(grid);
+      }
+    }, 50);
+    updateWorker.onerror = function (error) {
+      console.log(error);
+    }
+    updateWorker.postMessage({type: "updateRules", rules: rules})
+    updateWorker.postMessage({type: "updateGrid", grid: grid});
+  });
+});
