@@ -20,14 +20,6 @@ curl("underscore", function (_) {
     }
   }
 
-  cv = height - 5;
-  ch = width - 10;
-  window.grid[cv][ch-2] = 1;
-  window.grid[cv][ch-1] = 1;
-  window.grid[cv][ch] = 1;
-  window.grid[cv][ch+1] = 1;
-  window.grid[cv][ch+2] = 1;
-
   curl(["automaton/artist"], function (Artist) {
     function makeNewArtist() {
       window.artist = new Artist("automaton", width, height, {cellSize: cellSize});
@@ -42,12 +34,6 @@ curl("underscore", function (_) {
     //   "1: 1 && moore(1) == 2",
     //   "0"
     // ]
-
-    // Seeds:
-    window.rules = [
-      "1: 0 && moore(1) == 2",
-      "0"
-    ]
 
     function debugGrid(grid) {
       var height = grid.length;
@@ -75,6 +61,8 @@ curl("underscore", function (_) {
       console.log(error);
     }
     updateWorker.postMessage({type: "updateRules", rules: rules})
-    updateWorker.postMessage({type: "updateGrid", grid: grid});
+    curl("automaton/seeds/default", function(setup) {
+      updateWorker.postMessage({type: "updateGrid", grid: setup(grid)});
+    });
   });
 });
