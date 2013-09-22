@@ -1,68 +1,96 @@
-curl("underscore", function (_) {
+curl(["underscore", "automaton/artist"], function (_, Artist) {
   "use strict";
 
-  window.maxCellsWide = 40;
-  window.maxCellsHigh = 40;
-  var winh = window.innerHeight;
-  var winw = window.innerWidth;
-
-  var cellSize = Math.ceil(_.max([window.innerHeight / window.maxCellsHigh, window.innerWidth / window.maxCellsWide]));
-  var width = Math.ceil(winw / cellSize), height = Math.ceil(winh / cellSize);
-  var v, h;
-  var ch = parseInt(width / 2);
-  var cv = parseInt(height / 2);
-
-  window.grid = new Array(height);
-  for (v = 0; v < height; v += 1) {
-    grid[v] = new Array(width);
-    for (h = 0; h < width; h += 1) {
-      grid[v][h] = Math.floor(Math.random() * 0);
+  // Returns the height and width of a grid that fits the given cell
+  // dimensions and covers a canvas of the provided canvas dimensions.
+  //
+  // If `minimal` is true, then the dimensions returned are contained
+  // by the provided cell dimensions.  If `minimal` is false, then the
+  // dimensions returned *contain* the provided cell dimensions.
+  //
+  // Also returns the size, in canvas units, of each square cell.
+  var calculateGridDimensions = function calculateGridDimensions(cellsWide, cellsHigh, canvasWidth, canvasHeight, minimal) {
+    var cellSize;
+    if (minimal) {
+      cellSize = Math.ceil(_.max([canvasHeight / cellsHigh, canvasWidth / cellsWide]));
+    } else {
+      cellSize = Math.floor(_.min([canvasHeight / cellsHigh, canvasWidth / cellsWide]));
     }
+
+    return {
+      cellSize: cellSize,
+      height: Math.ceil(canvasHeight / cellSize),
+      width: Math.ceil(canvasWidth / cellSize)
+    };
+  };
+
+  // Creates an initialized grid of the specified width and height.
+  //
+  // If a state is given, that state is assigned to each cell as the default.
+  // If `state` is a function, it is called to initialize each cell with
+  //   the following arguments: (cell x, cell y, grid width, grid height).
+  // If a default state is not given, then state 0 is assumed.
+  var createGrid = function createGrid(width, height, state) {
+    var v,h;
+
+    // If no default state is given, state 0 becomes the default.
+    if (!state) { state = 0 }
+
+    var grid = new Array(height);
+    for (v = 0; v < height; v += 1) {
+      grid[v] = new Array(width);
+      for (h = 0; h < width; h += 1) {
+        if (typeof(state) === "function") {
+          grid[v][h] = state(h, v, width, height);
+        } else {
+          grid[v][h] = state;
+        }
+      }
+    }
+    return grid;
   }
 
-  curl(["automaton/artist"], function (Artist) {
-    function makeNewArtist() {
-      window.artist = new Artist("automaton", width, height, {cellSize: cellSize});
+  var grid, artist;
+  var updateWorker = new Worker("js/automaton/update-worker.js");
+  window.TIME_IS_FROZEN = false;
+  window.toggleAutomaton = function toggleAutomaton() {
+    window.TIME_IS_FROZEN = !window.TIME_IS_FROZEN;
+    if (!window.TIME_IS_FROZEN) {
+      updateWorker.postMessage({type: "updateGrid", grid: grid});
+    }
+  };
+  updateWorker.onmessage = _.throttle(function (event) {
+    if (event.data.type === "new grid") {
+      grid = event.data.grid;
+      if (!window.TIME_IS_FROZEN) {
+        updateWorker.postMessage({type: "updateGrid", grid: grid});
+      }
+      artist.draw(grid);
+    }
+  }, 60);
+  updateWorker.onerror = function (error) {
+    console.error("Error in automaton worker:", error);
+  }
+
+  // This is loaded separately in the interest of eventually making
+  // it easily swappable with other "presets".
+  curl("automaton/presets/default", function (preset) {
+    var dimensions = calculateGridDimensions(50, 50, window.innerWidth, window.innerHeight, true);
+    grid = createGrid(dimensions.width, dimensions.height);
+
+    var makeNewArtist = function makeNewArtist() {
+      var newDimensions = calculateGridDimensions(dimensions.width, dimensions.height, window.innerWidth, window.innerHeight);
+      artist = new Artist("automaton",
+        dimensions.width,
+        dimensions.height,
+        _.extend(preset.artistSettings, {cellSize: newDimensions.cellSize}));
       artist.draw(grid);
     }
     makeNewArtist();
-    window.onresize = makeNewArtist();
 
-    // Conway's Game of Life
-    // window.rules = [
-    //   "1: moore(1) == 3",
-    //   "1: 1 && moore(1) == 2",
-    //   "0"
-    // ]
+    window.addEventListener("resize", makeNewArtist);
 
-    function debugGrid(grid) {
-      var height = grid.length;
-      var width = grid[0].length;
-      var v, h;
-      console.group("grid");
-      for (v = 0; v < height; v += 1) {
-        console.log(grid[v].join("\t"));
-      }
-      console.groupEnd();
-    }
-
-    var updateWorker = new Worker("js/automaton/update-worker.js");
-    window.TIME_IS_FROZEN = false;
-    updateWorker.onmessage = _.throttle(function (event) {
-      if (event.data.type === "new grid") {
-        grid = event.data.grid;
-        if (!window.TIME_IS_FROZEN) {
-          updateWorker.postMessage({type: "updateGrid", grid: grid});
-        }
-        artist.draw(grid);
-      }
-    }, 50);
-    updateWorker.onerror = function (error) {
-      console.log(error);
-    }
-    updateWorker.postMessage({type: "updateRules", rules: rules})
-    curl("automaton/seeds/default", function(setup) {
-      updateWorker.postMessage({type: "updateGrid", grid: setup(grid)});
-    });
+    updateWorker.postMessage({type: "updateRules", rules: preset.rules});
+    updateWorker.postMessage({type: "updateGrid", grid: preset.seed(grid)});
   });
 });
