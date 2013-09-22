@@ -24,5 +24,16 @@ define(function () {
     };
   };
 
+  Grid.prototype.debug = function debug() {
+    var height = this.height();
+    var y;
+
+    console.group("grid");
+    for (y = 0; y < height; y += 1) {
+      console.log(this.grid[y].join("\t"));
+    }
+    console.groupEnd();
+  };
+
   return Grid;
 });
