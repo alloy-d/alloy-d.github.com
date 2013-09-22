@@ -31,6 +31,7 @@
 
   AutomatonArtist.prototype = (function () {
     var drawGridLines = function drawGridLines() {
+      if (!this.settings.gridThickness || !this.settings.gridColor) { return }
       var ctx, sz = this.settings.cellSize;
       if (typeof this.gridLines === "undefined") {
         this.gridLines = document.createElement("canvas");
