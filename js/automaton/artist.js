@@ -5,21 +5,18 @@
     root.AutomatonArtist = maker(Automaton);
   }
 }(this, function (Automaton) {
-  var AutomatonArtist = function AutomatonArtist(canvasID, gridWidth, gridHeight, settings, colors) {
+  var AutomatonArtist = function AutomatonArtist(canvasID, gridWidth, gridHeight, settings) {
     this.settings = {
       background: "#000000",
       gridColor: "#000",
       gridThickness: 2,
       cellSize: _.max([window.innerHeight / gridHeight, window.innerWidth / gridWidth]),
-    };
-    if (typeof colors !== "undefined") {
-      this.colors = colors;
-    } else {
-      this.colors = [
+      colors: [
         null,
-        "#000856"
-      ];
-    }
+        "#303030"
+      ]
+    };
+
     if (typeof settings !== "undefined") {
       this.settings = _.extend(this.settings, settings);
     }
@@ -68,8 +65,8 @@
       ctx.fillStyle = this.settings.background;
       ctx.fillRect(0, 0, this.gridWidth * sz, this.gridHeight * sz);
 
-      if (this.colors.length === 2 && this.colors[0] === null) { // optimized case
-        ctx.fillStyle = this.colors[1];
+      if (this.settings.colors.length === 2 && this.settings.colors[0] === null) { // optimized case
+        ctx.fillStyle = this.settings.colors[1];
         for (v = 0; v < this.gridHeight; v += 1) {
           for (h = 0; h < this.gridWidth; h += 1) {
             if (grid[v][h] === 0) { continue }
@@ -84,7 +81,7 @@
       } else { // Drawin' every color...
         for (v = 0; v < this.gridHeight; v += 1) {
           for (h = 0; h < this.gridWidth; h += 1) {
-            ctx.fillStyle = this.colors[grid[v][h]];
+            ctx.fillStyle = this.settings.colors[grid[v][h]];
             ctx.fillRect(h * sz, v * sz, sz, sz);
           }
         }
