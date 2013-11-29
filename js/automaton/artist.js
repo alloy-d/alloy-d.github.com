@@ -6,12 +6,14 @@
   }
 }(this, function (Automaton) {
   var AutomatonArtist = function AutomatonArtist(canvasID, gridWidth, gridHeight, settings) {
-    var canvasWidthInDips, canvasHeightInDips;
+    var parent, canvasWidthInDips, canvasHeightInDips;
+    this.canvas = document.getElementById(canvasID);
+    parent = this.canvas.parentElement;
     this.settings = {
       background: "#000000",
       gridColor: "#000",
       gridThickness: 2,
-      cellSize: _.max([window.innerHeight / gridHeight, window.innerWidth / gridWidth]),
+      cellSize: _.max([parent.scrollHeight / gridHeight, parent.scrollWidth / gridWidth]),
       colors: [
         null,
         "#303030"
@@ -25,7 +27,6 @@
     if (typeof settings !== "undefined") {
       this.settings = _.extend(this.settings, settings);
     }
-    this.canvas = document.getElementById(canvasID);
     this.context = this.canvas.getContext("2d")
     this.gridWidth = gridWidth;
     this.gridHeight = gridHeight;

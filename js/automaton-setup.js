@@ -75,11 +75,13 @@ curl(["underscore", "automaton/artist"], function (_, Artist) {
   // This is loaded separately in the interest of eventually making
   // it easily swappable with other "presets".
   curl("automaton/presets/default", function (preset) {
-    var dimensions = calculateGridDimensions(50, 50, window.innerWidth, window.innerHeight, true);
-    grid = createGrid(dimensions.width, dimensions.height);
+    var canvas = document.getElementById("automaton");
+    var container = canvas.parentElement;
+    var dimensions = calculateGridDimensions(50, 50, container.scrollWidth, container.scrollHeight, true);
+    grid = createGrid(dimensions.width, dimensions.height, function () { return parseInt(Math.random() * Math.random() * 2) });
 
     var makeNewArtist = function makeNewArtist() {
-      var newDimensions = calculateGridDimensions(dimensions.width, dimensions.height, window.innerWidth, window.innerHeight);
+      var newDimensions = calculateGridDimensions(dimensions.width, dimensions.height, container.scrollWidth, container.scrollHeight);
       artist = new Artist("automaton",
         dimensions.width,
         dimensions.height,
