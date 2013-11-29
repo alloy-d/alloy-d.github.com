@@ -78,12 +78,12 @@ curl(["underscore", "automaton/artist"], function (_, Artist) {
     var canvas = document.getElementById("automaton");
     var container = canvas.parentElement;
     var dimensions = calculateGridDimensions(50, 50, container.scrollWidth, container.scrollHeight, true);
-    grid = createGrid(dimensions.width+1, dimensions.height+1, function () { return parseInt(Math.random() * Math.random() * 2) });
+    grid = createGrid(dimensions.width+2, dimensions.height+1, function () { return parseInt(Math.random() * Math.random() * 2) });
 
     var makeNewArtist = function makeNewArtist() {
       var newDimensions = calculateGridDimensions(dimensions.width, dimensions.height, container.scrollWidth, container.scrollHeight);
       artist = new Artist("automaton",
-        dimensions.width+1,
+        dimensions.width+2,
         dimensions.height+1,
         _.extend(preset.artistSettings, {cellSize: newDimensions.cellSize}));
       artist.draw(grid);
