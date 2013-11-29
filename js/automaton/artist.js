@@ -6,6 +6,7 @@
   }
 }(this, function (Automaton) {
   var AutomatonArtist = function AutomatonArtist(canvasID, gridWidth, gridHeight, settings) {
+    var canvasWidthInDips, canvasHeightInDips;
     this.settings = {
       background: "#000000",
       gridColor: "#000",
@@ -16,6 +17,10 @@
         "#303030"
       ]
     };
+    this.pixelsPerDip = 1;
+    if (window.devicePixelRatio && window.devicePixelRatio > 1) {
+      this.pixelsPerDip = window.devicePixelRatio;
+    }
 
     if (typeof settings !== "undefined") {
       this.settings = _.extend(this.settings, settings);
@@ -25,18 +30,22 @@
     this.gridWidth = gridWidth;
     this.gridHeight = gridHeight;
 
-    this.canvas.width = gridWidth * this.settings.cellSize;
-    this.canvas.height = gridHeight * this.settings.cellSize;
+    canvasWidthInDips = gridWidth * this.settings.cellSize;
+    canvasHeightInDips = gridHeight * this.settings.cellSize;
+    this.canvas.width = canvasWidthInDips * this.pixelsPerDip;
+    this.canvas.height = canvasHeightInDips * this.pixelsPerDip;
+    this.canvas.style.width = canvasWidthInDips + "px";
+    this.canvas.style.height = canvasHeightInDips + "px";
   };
 
   AutomatonArtist.prototype = (function () {
     var drawGridLines = function drawGridLines() {
       if (!this.settings.gridThickness || !this.settings.gridColor) { return }
-      var ctx, sz = this.settings.cellSize;
+      var ctx, sz = this.settings.cellSize * this.pixelsPerDip;
       if (typeof this.gridLines === "undefined") {
         this.gridLines = document.createElement("canvas");
-        this.gridLines.width = this.gridWidth * sz;
-        this.gridLines.height = this.gridHeight * sz;
+        this.gridLines.width = this.canvas.width;
+        this.gridLines.height = this.canvas.height;
 
         ctx = this.gridLines.getContext("2d");
 
@@ -59,7 +68,7 @@
     }
 
     var draw = function draw(grid) {
-      var sz = this.settings.cellSize;
+      var sz = this.settings.cellSize * this.pixelsPerDip;
       var ctx = this.context;
       var v, h, hs;
 
