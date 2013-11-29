@@ -63,8 +63,12 @@
       var ctx = this.context;
       var v, h, hs;
 
-      ctx.fillStyle = this.settings.background;
-      ctx.fillRect(0, 0, this.gridWidth * sz, this.gridHeight * sz);
+      if (this.settings.background) {
+        ctx.fillStyle = this.settings.background;
+        ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
+      } else {
+        ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+      }
 
       if (this.settings.colors.length === 2 && this.settings.colors[0] === null) { // optimized case
         ctx.fillStyle = this.settings.colors[1];
