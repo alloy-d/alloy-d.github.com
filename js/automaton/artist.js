@@ -53,12 +53,12 @@
         ctx.lineWidth = this.settings.gridThickness;
         ctx.beginPath();
         for (v = 1; v < this.gridHeight; v += 1) {
-          ctx.moveTo(0, v * sz);
-          ctx.lineTo(this.canvas.width, v * sz);
+          ctx.moveTo(0, v * sz+0.5);
+          ctx.lineTo(this.canvas.width, v * sz+0.5);
         }
         for (h = 1; h < this.gridWidth; h += 1) {
-          ctx.moveTo(h * sz, 0);
-          ctx.lineTo(h * sz, this.canvas.height);
+          ctx.moveTo(h * sz+0.5, 0);
+          ctx.lineTo(h * sz+0.5, this.canvas.height);
         }
         ctx.stroke();
         ctx.closePath();
