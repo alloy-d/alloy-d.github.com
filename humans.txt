@@ -1,13 +1,13 @@
 /* AUTHOR */
         Dude: Adam Lloyd
         Contact: adam [at] alloy-d.net
-        Twitter: @lloyda2
-        From: College Park, MD, USA
+        Twitter: @jugglewheels
+        From: Brooklyn, NY
 
 /* SITE */
         Last update: a long time ago
         Language: English
         Doctype: HTML5
-        Editor: VIM
+        Editor: Sublime Text / VIM
         Hosting: GitHub
-        Other tools: Jekyll, Sass, redo
+        Other tools: Jekyll, Stylus, Grunt, PEG.js, curl (from cujoJS)
