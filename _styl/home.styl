@@ -5,18 +5,20 @@ body {
   margin: 0;
   padding: 0;
   text-rendering: optimizeLegibility;
-}
-body p {
-  margin: 1em auto;
-  font-size: 1.7em;
-  text-align: justify;
-  width: 60ex;
-}
-body h2 {
-  font: italic 400 4em "Sorts Mill Goudy";
-  color: #ff2800;
-  margin-top: 0.4em;
-  text-align: center;
+
+  p {
+    margin: 1em auto;
+    font-size: 1.7em;
+    text-align: justify;
+    width: 60ex;
+  }
+
+  h2 {
+    font: italic 400 4em "Sorts Mill Goudy";
+    color: #ff2800;
+    margin-top: 0.4em;
+    text-align: center;
+  }
 }
 
 .parallaxy-name {
@@ -41,33 +43,34 @@ h1.parallaxy-name {
   position: relative;
   width: 100%;
   z-index: 1990;
-}
-#name h1 {
-  color: #ffffff;
-  /*text-shadow: #ffffff 0 0 0.2ex;*/
-  z-index: 1990;
+
+  h1 {
+    color: #ffffff;
+    /*text-shadow: #ffffff 0 0 0.2ex;*/
+    z-index: 1990;
+  }
 }
 #about {
+  h1 {
+    /*color: #ff2800;*/
+    /*color: #00bfff;*/
+    color: #ffffff;
+    /*text-shadow: #73dcff 0 0 0.3ex,#00bfff 0 0 0.1ex;*/
+    text-shadow: #ffffff 0 0 0.2ex, #00bfff 0 0 0.3ex,#00bfff 0 0 0.1ex;
+    /*text-shadow: #00bfff -1px 1px 0, #00bfff 1px -1px 0, #00bfff 1px 1px 0, #00bfff -1px -1px 0;*/
+    z-index: 322;
+  }
+  h2 {
+    margin-top: 0.1em;
+    margin-bottom: 0.5em;
+  }
 }
-#about h1 {
-  /*color: #ff2800;*/
-  /*color: #00bfff;*/
-  color: #ffffff;
-  /*text-shadow: #73dcff 0 0 0.3ex,#00bfff 0 0 0.1ex;*/
-  text-shadow: #ffffff 0 0 0.2ex, #00bfff 0 0 0.3ex,#00bfff 0 0 0.1ex;
-  /*text-shadow: #00bfff -1px 1px 0, #00bfff 1px -1px 0, #00bfff 1px 1px 0, #00bfff -1px -1px 0;*/
-  z-index: 322;
-}
-#about h2 {
-  margin-top: 0.1em;
-  margin-bottom: 0.5em;
-}
+
 #automaton {
   position: absolute;
   bottom: 0;
   z-index: -1;
 }
-
 
 #links {
   display: none;
@@ -99,27 +102,30 @@ button {
   position: relative;
   text-align: center;
   z-index: 31337;
-}
-#link-glider a:link, #link-glider a:visited {
-  color: white;
-  margin: -0.2em;
-  padding: 0.2em;
-  text-decoration: none;
-}
-#link-glider a:hover {
-  text-shadow: #00bfff 0 0 0.1em, #ffffff 0 0 0.5em;
+
+  a:link, a:visited {
+    color: white;
+    margin: -0.2em;
+    padding: 0.2em;
+    text-decoration: none;
+
+    &:hover {
+      text-shadow: #00bfff 0 0 0.1em, #ffffff 0 0 0.5em;
+    }
+  }
 }
 
 table {
   border-spacing: 1px;
-}
-td {
-  height: 1.3em;
-  margin: 0;
-  padding: 0;
-  width: 1.3em;
-}
-td.cell-on {
-  background: #73dcff;
-  /*background: #007ca6;*/
+
+  td {
+    height: 1.3em;
+    margin: 0;
+    padding: 0;
+    width: 1.3em;
+
+    &.cell-on {
+      background: #73dcff;
+    }
+  }
 }
