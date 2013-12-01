@@ -3,7 +3,8 @@
   <head>
     <title>Adam Lloyd</title>
     <meta charset="utf-8" />
-    <link href='http://fonts.googleapis.com/css?family=Averia+Serif+Libre:300|Fanwood+Text:400italic|Actor' rel='stylesheet' type='text/css'>
+    <meta name="viewport" content="width=device-width,user-scalable=false,initial-scale=1,maximum-scale=1"/>
+    <link href='/css/vendor/font-awesome.min.css' rel='stylesheet'/>
     <!--[if lt IE 9]>
     <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
@@ -15,61 +16,203 @@
     <script src="/js/curl.js"></script>
     <style>
       body {
-        background-color: black;
+        background-color: white;
+        border-bottom: 0.3em solid #ff2800;
+        font: 300 100% "Source Sans Pro";
         margin: 0;
-        overflow: hidden;
         padding: 0;
         text-rendering: optimizeLegibility;
       }
-      #automaton {
-        left: 0;
-        min-height: 100%;
-        min-width: 100%;
-        position: fixed;
+      body p {
+        margin: 1em auto;
+        font-size: 1.7em;
+        text-align: justify;
+        width: 60ex;
+      }
+      body h2 {
+        font: italic 400 4em "Sorts Mill Goudy";
+        color: #ff2800;
+        margin-top: 0.4em;
+        text-align: center;
+      }
+
+      .parallaxy-name {
+        font: 400 8em "Sorts Mill Goudy";
+        height: 100%;  /* This makes scrolling waaaay smoother in WebKit. Obviously. */
+        margin: 0;
+        padding: 1.8em 0;
+        text-align: center;
+        width: 100%;
+      }
+      h1.parallaxy-name {
+        position: absolute;
         top: 0;
-        z-index: -1;
       }
 
       #name {
+        background-color: #00bfff;
+        /*border-bottom: 0.5em solid #ff2800;*/
         color: #eeeeff;
-        left: 6.5%;
-        position: absolute;
+        max-width: 100%;
+        overflow: hidden;
+        position: relative;
+        width: 100%;
         z-index: 1990;
       }
       #name h1 {
-        font: 300 5em "Averia Serif Libre";
-        text-shadow: black 0 0 70px, black 0 0 74px, black 0 0 78px, black 0 0 82px, black 0 0 86px;
+        color: #ffffff;
+        /*text-shadow: #ffffff 0 0 0.2ex;*/
+        z-index: 1990;
       }
-      #name #tagline {
-        font: 400 italic 1.8em "Fanwood Text";
-        left: 10ex;
-        position: relative;
-        top: -3em;
+      #about {
       }
+      #about h1 {
+        /*color: #ff2800;*/
+        /*color: #00bfff;*/
+        color: #ffffff;
+        /*text-shadow: #73dcff 0 0 0.3ex,#00bfff 0 0 0.1ex;*/
+        text-shadow: #ffffff 0 0 0.2ex, #00bfff 0 0 0.3ex,#00bfff 0 0 0.1ex;
+        /*text-shadow: #00bfff -1px 1px 0, #00bfff 1px -1px 0, #00bfff 1px 1px 0, #00bfff -1px -1px 0;*/
+        z-index: 322;
+      }
+      #about h2 {
+        margin-top: 0.1em;
+        margin-bottom: 0.5em;
+      }
+      #automaton {
+        position: absolute;
+        bottom: 0;
+        z-index: -1;
+      }
+
 
       #links {
         display: none;
+      }
+
+      #toggle {
+        bottom: 0.5em;
+        position: absolute;
+        right: 0.5em;
+      }
+
+      button {
+        /*background: rgba(255, 255, 255, 0.5);*/
+        background: black;
+        border: 1.5px solid rgba(255, 255, 255, 0.5);
+        border-radius: 0.4em;
+        color: white;
+        display: inline-block;
+        font-size: 1.6em;
+        height: 2em;
+        padding: 0.2em;
+        text-align: center;
+        width: 2em;
+      }
+
+      #link-glider {
+        font-size: 55px;
+        margin: 0.8em auto 1.9em auto;
+        position: relative;
+        text-align: center;
+        z-index: 31337;
+      }
+      #link-glider a:link, #link-glider a:visited {
+        color: white;
+        margin: -0.2em;
+        padding: 0.2em;
+        text-decoration: none;
+      }
+      #link-glider a:hover {
+        text-shadow: #00bfff 0 0 0.1em, #ffffff 0 0 0.5em;
+      }
+
+      table {
+        border-spacing: 1px;
+      }
+      td {
+        height: 1.3em;
+        margin: 0;
+        padding: 0;
+        width: 1.3em;
+      }
+      td.cell-on {
+        background: #73dcff;
+        /*background: #007ca6;*/
       }
     </style>
   </head>
   <body>
     <section id="name">
-      <h1>Adam Lloyd</h1>
-      <p id="tagline">artistry in code</p>
+      <div id="layer-name">
+        <h1 class='parallaxy-name'>Adam Lloyd</h1>
+        <div class='parallaxy-name spacer'>&nbsp;</div>
+      </div>
+      <canvas id="automaton"/>
     </section>
 
-    <section id="links">
-      <ul>
-        <li><a href="http://github.com/alloy-d/">code</a></li>
-        <li><a href="/short/">writing</a></li>
-        <li><a href="http://twitter.com/lloyda2" class="monospace">@lloyda2</a></li>
-        <li><a href="mailto:adam@alloy-d.net" class="monospace">adam@alloy-d.net</a></li>
-      </ul>
-    </section>
+    <section id="about">
+      <hgroup>
+        <h1 class='parallaxy-name'>Adam Lloyd</h1>
+        <h2>artistry in code</h2>
+      </hgroup>
 
-    <canvas id="automaton"/>
+      <table id='link-glider'>
+        <tr>
+          <td></td>
+          <td class='cell-on'><a href='http://github.com/alloy-d/'><i class="icon-github-alt"/></a></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td class='cell-on'><a href='http://twitter.com/jugglewheels'><i class="icon-twitter"/></a></td>
+        </tr>
+        <tr>
+          <td class='cell-on'><a href='http://www.linkedin.com/pub/adam-lloyd/48/750/968'><i class='icon-linkedin'/></a></td>
+          <td class='cell-on'><a href='mailto:adam@alloy-d.net'><i class='icon-envelope'/></a></td>
+          <td class='cell-on'></td>
+        </tr>
+      </table>
+    </section>
     <script>
       curl("automaton-setup");
+    </script>
+    <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
+    <script>
+      window.addEventListener("keyup", function (e) {
+        if (e.which === 88) {
+          window.TIME_IS_FROZEN=true;
+        }
+      });
+    </script>
+    <script>
+      var scrollHandler = (function () {
+        var header = document.querySelector("#name");
+        var affectedElements = document.querySelectorAll("h1.parallaxy-name");
+        var textPadding = parseInt(window.getComputedStyle(affectedElements[0]).paddingTop);
+        var headerHeight = header.offsetHeight;
+        var finalOffset = headerHeight - textPadding;
+        Array.prototype.forEach.call(affectedElements, function (elem) {
+          elem.style.position = "fixed";
+        });
+        return function () {
+          if (window.pageYOffset > headerHeight) {
+            Array.prototype.forEach.call(affectedElements, function (elem) {
+              elem.style.top = -textPadding + "px";
+              // elem.style.top = finalOffset + "px";
+            })
+            return;
+          }
+
+          var percentHidden = (headerHeight - window.pageYOffset)/headerHeight;
+          var newOffset = -((1-percentHidden)*textPadding) + "px";
+          Array.prototype.forEach.call(affectedElements, function (elem) {
+            elem.style.top = newOffset;
+          });
+        }
+      }());
+      window.addEventListener("scroll", scrollHandler);
     </script>
   </body>
 </html>
