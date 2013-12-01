@@ -6,12 +6,12 @@ define([
     rules: rules,
     seed: seed,
     artistSettings: {
-      background: "#000000",
+      background: null,
       colors: [
         null,
-        "#003555",
+        "#73dcff",
       ],
-      gridColor: "#000000",
+      gridColor: "#00bfff",
       gridThickness: 1
     },
   };
