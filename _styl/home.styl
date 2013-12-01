@@ -1,7 +1,16 @@
+// These will be hashes eventually,
+// but right now I'm too lazy to update stylus in LiveReload.
+color-main = #00bfff
+color-main-light = #73dcff
+color-accent = #ff2800
+
+typeface-header = "Sorts Mill Goudy", serif;
+typeface-body = "Source Sans Pro", sans-serif;
+
 body {
   background-color: white;
-  border-bottom: 0.3em solid #ff2800;
-  font: 300 100% "Source Sans Pro";
+  border-bottom: 0.3em solid color-accent;
+  font: 300 100% typeface-body;
   margin: 0;
   padding: 0;
   text-rendering: optimizeLegibility;
@@ -14,15 +23,15 @@ body {
   }
 
   h2 {
-    font: italic 400 4em "Sorts Mill Goudy";
-    color: #ff2800;
+    font: italic 400 4em typeface-header;
+    color: color-accent;
     margin-top: 0.4em;
     text-align: center;
   }
 }
 
 .parallaxy-name {
-  font: 400 8em "Sorts Mill Goudy";
+  font: 400 8em typeface-header;
   height: 100%;  /* This makes scrolling waaaay smoother in WebKit. Obviously. */
   margin: 0;
   padding: 1.8em 0;
@@ -35,7 +44,7 @@ h1.parallaxy-name {
 }
 
 #name {
-  background-color: #00bfff;
+  background-color: color-main;
   color: #eeeeff;
   max-width: 100%;
   overflow: hidden;
@@ -51,7 +60,7 @@ h1.parallaxy-name {
 #about {
   h1 {
     color: #ffffff;
-    text-shadow: #ffffff 0 0 0.2ex, #00bfff 0 0 0.3ex,#00bfff 0 0 0.1ex;
+    text-shadow: #ffffff 0 0 0.2ex, color-main 0 0 0.3ex,color-main 0 0 0.1ex;
     z-index: 322;
   }
   h2 {
@@ -80,7 +89,7 @@ h1.parallaxy-name {
     text-decoration: none;
 
     &:hover {
-      text-shadow: #00bfff 0 0 0.1em, #ffffff 0 0 0.5em;
+      text-shadow: color-main 0 0 0.1em, #ffffff 0 0 0.5em;
     }
   }
 }
@@ -95,7 +104,7 @@ table {
     width: 1.3em;
 
     &.cell-on {
-      background: #73dcff;
+      background: color-main-light;
     }
   }
 }
