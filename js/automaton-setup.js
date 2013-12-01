@@ -59,15 +59,51 @@ curl(["underscore", "automaton/artist"], function (_, Artist) {
       updateWorker.postMessage({type: "updateGrid", grid: grid});
     }
   };
-  updateWorker.onmessage = _.throttle(function (event) {
+  // updateWorker.onmessage = _.throttle(function (event) {
+  //   if (event.data.type === "new grid") {
+  //     grid = event.data.grid;
+  //     if (!window.TIME_IS_FROZEN) {
+  //       updateWorker.postMessage({type: "updateGrid", grid: grid});
+  //     }
+  //     artist.draw(grid);
+  //   }
+  // }, 60);
+  var canvas = document.getElementById("automaton");
+  var container = canvas.parentElement;
+  updateWorker.onmessage = function (event) {
+    var slowdownOffset = container.offsetHeight / 3;
+    var amountVisibleWhenPaused = 200;
+    var baseTimeout = 100;
+    var maxSlowdown = 940;
+    var currentOffset;
+    var timeout = baseTimeout;
+    var scrollListener = function () {
+      if (window.pageYOffset > container.offsetHeight - amountVisibleWhenPaused) {
+        return;
+      } else {
+        updateWorker.postMessage({type: "updateGrid", grid: grid});
+        window.removeEventListener("scroll", scrollListener);
+      }
+    };
     if (event.data.type === "new grid") {
       grid = event.data.grid;
       if (!window.TIME_IS_FROZEN) {
-        updateWorker.postMessage({type: "updateGrid", grid: grid});
+        timeout = baseTimeout;
+        currentOffset = window.pageYOffset;
+        if (currentOffset < container.offsetHeight - amountVisibleWhenPaused) {
+          if (currentOffset > slowdownOffset) {
+            timeout += maxSlowdown * (currentOffset-slowdownOffset) / (container.offsetHeight-amountVisibleWhenPaused)
+          }
+          window.setTimeout(function () {
+            updateWorker.postMessage({type: "updateGrid", grid: grid});
+          }, timeout);
+        } else {
+          window.addEventListener("scroll", scrollListener);
+        }
       }
       artist.draw(grid);
     }
-  }, 60);
+  }
   updateWorker.onerror = function (error) {
     console.error("Error in automaton worker:", error);
   }
