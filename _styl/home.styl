@@ -82,6 +82,10 @@ h1.parallaxy-name {
   text-align: center;
   z-index: 31337;
 
+  .cell {
+    // height: 1.3em;  // I don't know what Firefox does with this...
+    width: 1.3em;
+  }
   .cell-on {
     background: color-main-light;
   }
@@ -111,10 +115,8 @@ h1.parallaxy-name {
   }
   &.td {
     display: table-cell;
-    // height: 1.3em;  // I don't know what Firefox does with this...
     margin: 0;
     padding: 0;
-    width: 1.3em;
   }
 }
 
