@@ -186,33 +186,9 @@
         }
       });
     </script>
-    <script>
-      var scrollHandler = (function () {
-        var header = document.querySelector("#name");
-        var affectedElements = document.querySelectorAll("h1.parallaxy-name");
-        var textPadding = parseInt(window.getComputedStyle(affectedElements[0]).paddingTop);
-        var headerHeight = header.offsetHeight;
-        var finalOffset = headerHeight - textPadding;
-        Array.prototype.forEach.call(affectedElements, function (elem) {
-          elem.style.position = "fixed";
-        });
-        return function () {
-          if (window.pageYOffset > headerHeight) {
-            Array.prototype.forEach.call(affectedElements, function (elem) {
-              elem.style.top = -textPadding + "px";
-              // elem.style.top = finalOffset + "px";
-            })
-            return;
-          }
 
-          var percentHidden = (headerHeight - window.pageYOffset)/headerHeight;
-          var newOffset = -((1-percentHidden)*textPadding) + "px";
-          Array.prototype.forEach.call(affectedElements, function (elem) {
-            elem.style.top = newOffset;
-          });
-        }
-      }());
-      window.addEventListener("scroll", scrollHandler);
+    <script>
+      curl("parallaxy-name");
     </script>
   </body>
 </html>
