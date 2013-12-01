@@ -2,145 +2,23 @@
 <html>
   <head>
     <title>Adam Lloyd</title>
+
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,user-scalable=false,initial-scale=1,maximum-scale=1"/>
+
+    <link href='/css/home.css' rel='stylesheet'/>
     <link href='/css/vendor/font-awesome.min.css' rel='stylesheet'/>
+
     <!--[if lt IE 9]>
     <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
+
     <script>
       window.curl = {
         baseUrl: "js"
       }
     </script>
     <script src="/js/curl.js"></script>
-    <style>
-      body {
-        background-color: white;
-        border-bottom: 0.3em solid #ff2800;
-        font: 300 100% "Source Sans Pro";
-        margin: 0;
-        padding: 0;
-        text-rendering: optimizeLegibility;
-      }
-      body p {
-        margin: 1em auto;
-        font-size: 1.7em;
-        text-align: justify;
-        width: 60ex;
-      }
-      body h2 {
-        font: italic 400 4em "Sorts Mill Goudy";
-        color: #ff2800;
-        margin-top: 0.4em;
-        text-align: center;
-      }
-
-      .parallaxy-name {
-        font: 400 8em "Sorts Mill Goudy";
-        height: 100%;  /* This makes scrolling waaaay smoother in WebKit. Obviously. */
-        margin: 0;
-        padding: 1.8em 0;
-        text-align: center;
-        width: 100%;
-      }
-      h1.parallaxy-name {
-        position: absolute;
-        top: 0;
-      }
-
-      #name {
-        background-color: #00bfff;
-        /*border-bottom: 0.5em solid #ff2800;*/
-        color: #eeeeff;
-        max-width: 100%;
-        overflow: hidden;
-        position: relative;
-        width: 100%;
-        z-index: 1990;
-      }
-      #name h1 {
-        color: #ffffff;
-        /*text-shadow: #ffffff 0 0 0.2ex;*/
-        z-index: 1990;
-      }
-      #about {
-      }
-      #about h1 {
-        /*color: #ff2800;*/
-        /*color: #00bfff;*/
-        color: #ffffff;
-        /*text-shadow: #73dcff 0 0 0.3ex,#00bfff 0 0 0.1ex;*/
-        text-shadow: #ffffff 0 0 0.2ex, #00bfff 0 0 0.3ex,#00bfff 0 0 0.1ex;
-        /*text-shadow: #00bfff -1px 1px 0, #00bfff 1px -1px 0, #00bfff 1px 1px 0, #00bfff -1px -1px 0;*/
-        z-index: 322;
-      }
-      #about h2 {
-        margin-top: 0.1em;
-        margin-bottom: 0.5em;
-      }
-      #automaton {
-        position: absolute;
-        bottom: 0;
-        z-index: -1;
-      }
-
-
-      #links {
-        display: none;
-      }
-
-      #toggle {
-        bottom: 0.5em;
-        position: absolute;
-        right: 0.5em;
-      }
-
-      button {
-        /*background: rgba(255, 255, 255, 0.5);*/
-        background: black;
-        border: 1.5px solid rgba(255, 255, 255, 0.5);
-        border-radius: 0.4em;
-        color: white;
-        display: inline-block;
-        font-size: 1.6em;
-        height: 2em;
-        padding: 0.2em;
-        text-align: center;
-        width: 2em;
-      }
-
-      #link-glider {
-        font-size: 55px;
-        margin: 0.8em auto 1.9em auto;
-        position: relative;
-        text-align: center;
-        z-index: 31337;
-      }
-      #link-glider a:link, #link-glider a:visited {
-        color: white;
-        margin: -0.2em;
-        padding: 0.2em;
-        text-decoration: none;
-      }
-      #link-glider a:hover {
-        text-shadow: #00bfff 0 0 0.1em, #ffffff 0 0 0.5em;
-      }
-
-      table {
-        border-spacing: 1px;
-      }
-      td {
-        height: 1.3em;
-        margin: 0;
-        padding: 0;
-        width: 1.3em;
-      }
-      td.cell-on {
-        background: #73dcff;
-        /*background: #007ca6;*/
-      }
-    </style>
   </head>
   <body>
     <section id="name">
