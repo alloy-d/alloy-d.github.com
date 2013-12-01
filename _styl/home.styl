@@ -82,6 +82,10 @@ h1.parallaxy-name {
   text-align: center;
   z-index: 31337;
 
+  .cell-on {
+    background: color-main-light;
+  }
+
   a:link, a:visited {
     color: white;
     margin: -0.2em;
@@ -94,17 +98,23 @@ h1.parallaxy-name {
   }
 }
 
-table {
-  border-spacing: 1px;
-
-  td {
-    height: 1.3em;
+.totally-not-a {
+  &.table {
+    border-spacing: 1px;
+    display: table;
+  }
+  &.tbody {
+    display: table-row-group;
+  }
+  &.tr {
+    display: table-row;
+  }
+  &.td {
+    display: table-cell;
+    // height: 1.3em;  // I don't know what Firefox does with this...
     margin: 0;
     padding: 0;
     width: 1.3em;
-
-    &.cell-on {
-      background: color-main-light;
-    }
   }
 }
+
