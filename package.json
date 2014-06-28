@@ -17,6 +17,7 @@
   },
   "devDependencies": {
     "grunt": "~0.4.1",
-    "pegjs": "~0.7.0"
+    "pegjs": "~0.7.0",
+    "grunt-contrib-stylus": "~0.11.0"
   }
 }

@@ -1,7 +1,15 @@
 module.exports = function (grunt) {
   grunt.initConfig({
     package: grunt.file.readJSON("package.json"),
+    stylus: {
+      compile: {
+        files: {
+          'css/home.css': '_styl/home.styl' // 1:1 compile
+        }
+      }
+    }
   });
+  grunt.loadNpmTasks("grunt-contrib-stylus");
 
   grunt.registerTask("build-parser", function () {
     var fs   = require("fs");
