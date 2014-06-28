@@ -43,7 +43,6 @@
   </head>
   <body>
     <div>
-      <img id="star" src="/automata/star.png" />
       <canvas id="automaton" />
     </div>
     <script>
@@ -51,13 +50,20 @@
         var canvas = document.querySelector("#automaton");
         var presetName = "default";
         var presetParam = document.location.search.match(/preset=([^&]+)/);
+        var star;
         if (presetParam) {
           presetName = presetParam[1];
+
+          if (presetName === "christmas") {
+            star = document.createElement("img");
+            star.id = "star";
+            star.src = "star.png";
+            canvas.parentElement.appendChild(star);
+          }
         }
 
         setup(canvas, presetName);
       });
     </script>
-    <!--<script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>-->
   </body>
 </html>
