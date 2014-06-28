@@ -60,7 +60,10 @@
       </div>
     </section>
     <script>
-      curl(["parallaxy-name", "automaton-setup"]);
+      curl("parallaxy-name");
+      curl("automaton-setup", function (setup) {
+        setup(document.getElementById("automaton"), "default");
+      });
     </script>
   </body>
 </html>
