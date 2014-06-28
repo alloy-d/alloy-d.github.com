@@ -8,27 +8,30 @@ define(["domReady!"], function () {
   var repositionParallaxyThings = (function () {
     var scrollingSection = document.querySelector("#name");
     var scrollingSectionHeight = scrollingSection.offsetHeight;
+    var scrollingSectionShown = scrollingSectionHeight * 0.32; // FIXME: get a better number
+    var scrollingSectionHidden = scrollingSectionHeight - scrollingSectionShown;
 
     var affectedElements = document.querySelectorAll("h1.parallaxy-name");
-    var elementsTopPadding = parseInt(window.getComputedStyle(affectedElements[0]).paddingTop);
+    var initialOffset = parseInt(window.getComputedStyle(affectedElements[0]).top);
 
-    var finalOffset = scrollingSectionHeight - elementsTopPadding;
+    var finalOffset = scrollingSectionShown*0.90;
+    var deltaOffset = finalOffset - initialOffset;
     Array.prototype.forEach.call(affectedElements, function (elem) {
       elem.style.position = "fixed";
     });
 
     return function () {
       var percentHidden, newOffset;
-      if (window.pageYOffset > scrollingSectionHeight) {
+      if (window.pageYOffset > scrollingSectionHidden) {
         // No recalculation if the whole section has scrolled out of view.
         Array.prototype.forEach.call(affectedElements, function (elem) {
-          elem.style.top = -elementsTopPadding + "px";
+          elem.style.top = finalOffset + "px";
         })
         return;
       }
 
-      percentHidden = (scrollingSectionHeight - window.pageYOffset)/scrollingSectionHeight;
-      newOffset = -((1-percentHidden)*elementsTopPadding) + "px";
+      percentHidden = window.pageYOffset/scrollingSectionHidden;
+      newOffset = initialOffset + percentHidden*deltaOffset + "px";
       Array.prototype.forEach.call(affectedElements, function (elem) {
         elem.style.top = newOffset;
       });
