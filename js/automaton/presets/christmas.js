@@ -1,7 +1,6 @@
 define([
-  "automaton/rules/seeds",
   "automaton/seeds/christmas-tree"
-], function (rules, seed) {
+], function (seed) {
   var shades = function (rgbStart, rgbEnd, steps) {
     var i;
     var colors = [];
