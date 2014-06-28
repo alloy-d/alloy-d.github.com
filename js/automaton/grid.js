@@ -7,6 +7,7 @@ define(function () {
     return this.grid[y][x];
   };
   Grid.prototype.set = function set(x, y, value) {
+    if (x >= this.width() || y >= this.height()) { return };
     this.grid[y][x] = value;
   };
 

@@ -96,6 +96,7 @@
       } else { // Drawin' every color...
         for (v = 0; v < this.gridHeight; v += 1) {
           for (h = 0; h < this.gridWidth; h += 1) {
+            if (this.settings.colors[grid[v][h]] === null) { continue };
             ctx.fillStyle = this.settings.colors[grid[v][h]];
             ctx.fillRect(h * sz, v * sz, sz, sz);
           }
