@@ -63,8 +63,8 @@
     </div>
     <script>
       curl("parallaxy-name");
-      curl("automaton-setup", function (setup) {
-        setup(document.getElementById("automaton"), "default");
+      curl(["automaton-setup", "scroll-n-slow-automaton-handler"], function (setup, handler) {
+        setup(document.getElementById("automaton"), "default", handler);
       });
     </script>
   </body>
