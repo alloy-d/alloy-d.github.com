@@ -118,10 +118,10 @@ define(["underscore", "automaton/artist"], function (_, Artist) {
       var desiredGridWidth = 50, desiredGridHeight = 50;
       var dimensions;
 
-      if (preset.gridWidth) { desiredGridWidth = preset.gridWidth };
+      if (preset.gridWidth)  { desiredGridWidth  = preset.gridWidth  };
       if (preset.gridHeight) { desiredGridHeight = preset.gridHeight };
 
-      dimensions = calculateGridDimensions(desiredGridWidth, desiredGridHeight, container.scrollWidth, container.scrollHeight, true);
+      dimensions = calculateGridDimensions(desiredGridWidth, desiredGridHeight, container.offsetWidth, container.offsetHeight, true);
       console.log("Dimensions:", dimensions);
       grid = createGrid(dimensions.width+2, dimensions.height+1);
       window.grid = grid;
@@ -132,9 +132,9 @@ define(["underscore", "automaton/artist"], function (_, Artist) {
       var makeNewArtist = function makeNewArtist(minimal) {
         var newDimensions
         if (minimal === true) {
-          newDimensions = calculateGridDimensions(dimensions.width, dimensions.height, container.scrollWidth, container.scrollHeight, true);
+          newDimensions = calculateGridDimensions(dimensions.width, dimensions.height, container.offsetWidth, container.offsetHeight, true);
         } else {
-          newDimensions = calculateGridDimensions(dimensions.width, dimensions.height, container.scrollWidth, container.scrollHeight);
+          newDimensions = calculateGridDimensions(dimensions.width, dimensions.height, container.offsetWidth, container.offsetHeight, true);
         }
         artist = new Artist(canvas.id,
           dimensions.width+2,
