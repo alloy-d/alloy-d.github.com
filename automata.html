@@ -1,4 +1,4 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -15,13 +15,20 @@
       }
       #automaton {
         height: 100%;
+        position: relative;
+        width: 100%;
+      }
+      div {
+        height: 100%;
         width: 100%;
       }
     </style>
   </head>
 
   <body>
-    <canvas id="automaton"/>
+    <div>
+      <canvas id="automaton"></canvas>
+    </div>
     <script src="js/underscore.js"></script>
     <script src="js/automaton.js"></script>
     <script src="js/automaton-rule-parser.js"></script>

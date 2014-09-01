@@ -130,7 +130,7 @@ define(["underscore", "automaton/artist"], function (_, Artist) {
       // });
 
       var makeNewArtist = function makeNewArtist(minimal) {
-        var newDimensions
+        var newDimensions;
         if (minimal === true) {
           newDimensions = calculateGridDimensions(dimensions.width, dimensions.height, container.offsetWidth, container.offsetHeight, true);
         } else {
