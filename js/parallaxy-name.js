@@ -20,7 +20,16 @@ define(["domReady!"], function () {
       var scrollingSectionShown  = scrollingSectionHeight * 0.32; // FIXME: get a better number
       var scrollingSectionHidden = scrollingSectionHeight - scrollingSectionShown;
 
-      var initialOffset = parseInt(window.getComputedStyle(affectedElements[0]).top);
+      var initialOffset = (function () {
+        var el = affectedElements[1];
+        var oldTop = el.style.top;
+        var baseTop;
+
+        el.style.top = null;
+        baseTop = parseInt(window.getComputedStyle(el).top);
+        el.style.top = oldTop;
+        return baseTop;
+      }());
 
       var finalOffset = scrollingSectionShown*0.90;
       var deltaOffset = finalOffset - initialOffset;
