@@ -9,9 +9,9 @@ define([
       background: null,
       colors: [
         null,
-        "#73dcff",
+        "#eafaff"
       ],
-      gridColor: "#00bfff",
+      gridColor: "#fafafa",
       gridThickness: 1
     },
   };
