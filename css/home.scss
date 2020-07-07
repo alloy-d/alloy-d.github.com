@@ -1,0 +1,202 @@
+---
+---
+@import "reset.css";
+
+@mixin font-requiem-ornaments-display {
+  font-family: "Requiem Display Orn A", "Requiem Display Orn B";
+  font-style: normal;
+  font-weight: 400;
+}
+@mixin font-requiem-ornaments-text {
+  font-family: "Requiem Text Orn A", "Requiem Text Orn B";
+  font-style: normal;
+  font-weight: 400;
+}
+
+@mixin font-requiem-fine {
+  font-family: "Requiem Fine A", "Requiem Fine B";
+  font-style: normal;
+  font-weight: 400;
+}
+
+@mixin font-requiem-display {
+  font-family: "Requiem Display A", "Requiem Display B";
+  font-style: normal;
+  font-weight: 400;
+}
+
+@mixin font-requiem-text {
+  font-family: "Requiem Text A", "Requiem Text B";
+  font-style: normal;
+  font-weight: 400;
+}
+
+$less-big-to-big-ratio: 0.25; // calibrate: banner doesn't look stupid
+
+$size-big: 18.6vw; // calibrate: name line fills screen
+$size-less-big: $size-big * $less-big-to-big-ratio;
+
+$size-big-portrait: 26vw;
+$size-less-big-portrait: $size-big-portrait * $less-big-to-big-ratio;
+
+$color-background: #EAEAEA;
+$color-foreground: #050404;
+$color-greenish: #3A4F41;
+$color-accent-bright: #3C91E6;
+$color-accent-dark: #2B061E;
+
+$acanthus-left: "\e074";
+$acanthus-right: "\e075";
+$fleuron-four-point: "\e073";
+$fleuron-five-point: "\e072";
+
+$leaf-anticlockwise-top: "\e076";
+$leaf-anticlockwise-right: "\e077";
+$leaf-anticlockwise-bottom: "\e078";
+$leaf-anticlockwise-left: "\e079";
+$leaf-clockwise-top: "\e07a";
+$leaf-clockwise-right: "\e07b";
+$leaf-clockwise-bottom: "\e07c";
+$leaf-clockwise-left: "\e07d";
+
+
+$ends: (
+  "acanthine": (
+    "left": "\e052",
+    "right": "\e053",
+  ),
+  "acanthine-hairline": (
+    "left": "\e050",
+    "right": "\e051",
+  ),
+
+  "bannered": (
+    "left": "\e06d",
+    "right": "\e06e",
+  ),
+  "bannered-curled": (
+    "left": "\e06f",
+    "right": "\e070",
+  ),
+
+  "floriated": (
+    "left": "\e057",
+    "right": "\e059",
+  ),
+  "floriated-hairline": (
+    "left": "\e054",
+    "right": "\e056",
+  ),
+);
+
+html, body {
+  background-color: $color-background;
+  color: $color-foreground;
+  font-size: 100%;
+  margin: 0;
+  min-height: 100%;
+  max-height: 100%;
+}
+
+body {
+  height: 100vh;
+}
+
+@mixin cartouche($kind, $hairline: false) {
+  @include font-requiem-ornaments-display;
+  text-transform: if($hairline, uppercase, lowercase);
+
+  $requested-ends: map-get($ends, if($hairline, "#{$kind}-hairline", $kind));
+
+  &:before {
+    content: map-get($requested-ends, "left");
+  }
+  &:after {
+    content: map-get($requested-ends, "right");
+  }
+}
+
+#flashy-name {
+  height: 100%;
+  position: relative;
+  width: 100%;
+
+  header {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-51%);
+    width: 100%;
+  }
+}
+
+h1 {
+  @include font-requiem-display;
+
+  color: $color-accent-dark;
+  font-size: $size-big;
+  margin: 0;
+  text-transform: uppercase;
+  text-align: center;
+
+  &:before, &:after {
+    @include font-requiem-ornaments-display;
+    color: $color-greenish;
+    font-size: 0.66em;
+    margin: 0.11ex;
+    vertical-align: 0.14em;
+  }
+
+  &:before {
+    content: $acanthus-left;
+  }
+  &:after {
+    content: $acanthus-right;
+  }
+}
+
+#tagline {
+  @include cartouche('bannered-curled');
+  color: $color-accent-bright;
+  margin: 0;
+  font-size: $size-less-big;
+  text-align: center;
+}
+
+.sample {
+  @include font-requiem-ornaments-text;
+  font-size: 2em;
+}
+
+@media screen and (orientation: portrait) {
+  h1 {
+    font-size: $size-big-portrait;
+
+    &:before, &:after {
+      display: none;
+    }
+  }
+  #tagline {
+    font-size: $size-less-big-portrait;
+  }
+  #flashy-name header {
+    transform: translateY(-55%);
+
+    &:before, &:after {
+      @include font-requiem-ornaments-display;
+      color: $color-greenish;
+      display: block;
+      font-size: $size-big-portrait * 0.66;
+      letter-spacing: -0.08ex;
+      text-align: center;
+    }
+
+    &:before {
+      //content: "#{$acanthus-left}#{$fleuron-four-point}#{$acanthus-right}";
+      content: "#{$leaf-anticlockwise-bottom}#{$fleuron-four-point}#{$leaf-clockwise-bottom}";
+    }
+    &:after {
+      content: "#{$leaf-clockwise-top}#{$fleuron-four-point}#{$leaf-anticlockwise-top}";
+      margin-top: 0.01em;
+    }
+  }
+}
