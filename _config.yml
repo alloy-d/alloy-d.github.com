@@ -1,6 +1,3 @@
-auto: true
-server: true
-
 source: .
 destination: ./_site
 
