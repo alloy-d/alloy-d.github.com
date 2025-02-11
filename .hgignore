@@ -1,7 +1,0 @@
-syntax: glob
-
-_site/
-stories
-.redo/
-.sass-cache/
-
